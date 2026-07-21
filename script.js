@@ -1,131 +1,150 @@
-/* =========================================================
-   REFERRAL HUB — script.js
-   Vanilla JS. Lenis smooth scroll + IO + micro-interactions.
-   ========================================================= */
+/* =========================================================================
+   REFERRAL HUB — Core JavaScript
+   Vanilla JS, ES6+, Hardware Accelerated Animations, Intersection Observers
+   ========================================================================= */
 
 (() => {
   'use strict';
 
+  // --- Utility Selectors ---
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  /* =========================================================
-     PRELOADER + HERO REVEAL
-     ========================================================= */
+  /* =========================================================================
+     1. PRELOADER & INITIAL REVEALS
+     ========================================================================= */
   const preloader = $('#preloader');
   const barFill = $('#preloader-bar-fill');
   const barCount = $('#preloader-count');
   let progress = 0;
 
   const tick = () => {
-    progress = Math.min(100, progress + Math.random() * 12 + 4);
+    // Randomize progress increments for a natural loading feel
+    progress = Math.min(100, progress + Math.random() * 15 + 5);
+    
     if (barFill) barFill.style.width = progress + '%';
     if (barCount) barCount.textContent = Math.floor(progress) + '%';
     
     if (progress < 100) {
-      setTimeout(tick, 90);
+      setTimeout(tick, 60);
     } else {
       setTimeout(() => {
         if (preloader) preloader.classList.add('hide');
+        
+        // Trigger Hero Animations
         const heroTitle = $('.hero-title');
-        if (heroTitle) heroTitle.classList.add('reveal');
         const heroSub = $('.hero-sub');
+        if (heroTitle) heroTitle.classList.add('reveal');
         if (heroSub) heroSub.classList.add('in');
       }, 400);
     }
   };
-  window.addEventListener('load', () => setTimeout(tick, 80));
+  
+  // Start preloader once DOM is interactable
+  window.addEventListener('DOMContentLoaded', () => setTimeout(tick, 50));
 
-  /* =========================================================
-     LENIS SMOOTH SCROLL
-     ========================================================= */
+  /* =========================================================================
+     2. LENIS SMOOTH SCROLL
+     ========================================================================= */
   let lenis = null;
-  if (window.Lenis) {
+  if (typeof window.Lenis !== 'undefined') {
     lenis = new window.Lenis({
-      duration: 1.15,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
     });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
   }
 
-  /* Smooth scroll for anchor links */
-  $$('a[href^="#"]').forEach((a) => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href');
+  // Smooth Scroll for Anchor Links (Intercepts Lenis)
+  $$('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const id = anchor.getAttribute('href');
       if (!id || id === '#') return;
-      const target = document.querySelector(id);
+      const target = $(id);
       if (!target) return;
+      
       e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 80;
-      if (lenis) lenis.scrollTo(y, { duration: 1.4 });
-      else window.scrollTo({ top: y, behavior: 'smooth' });
+      const offset = target.getBoundingClientRect().top + window.scrollY - 100;
+      
+      if (lenis) {
+        lenis.scrollTo(offset, { duration: 1.5 });
+      } else {
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
     });
   });
 
-  /* To Top Button */
-  const toTop = $('#to-top');
-  toTop?.addEventListener('click', () => {
-    if (lenis) lenis.scrollTo(0, { duration: 1.6 });
+  // To Top Button
+  const toTopBtn = $('#to-top');
+  toTopBtn?.addEventListener('click', () => {
+    if (lenis) lenis.scrollTo(0, { duration: 1.5 });
     else window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* =========================================================
-     NAVBAR + SCROLL PROGRESS
-     ========================================================= */
+  /* =========================================================================
+     3. HEADER, PROGRESS BAR & SCROLL STATES
+     ========================================================================= */
   const nav = $('#nav');
   const progressBar = $('#scroll-progress');
   
-  const onScroll = () => {
+  const handleScroll = () => {
     const y = window.scrollY;
     
-    // Toggle Nav blur/bg
-    if (nav) nav.classList.toggle('scrolled', y > 40);
+    // Header Glassmorphism Toggle
+    if (nav) nav.classList.toggle('scrolled', y > 50);
     
-    // Toggle To-Top button visibility
-    if (toTop) {
-      if (y > 600) {
-        toTop.style.opacity = '1';
-        toTop.style.pointerEvents = 'auto';
-      } else {
-        toTop.style.opacity = '0';
-        toTop.style.pointerEvents = 'none';
-      }
+    // To-Top Button Visibility
+    if (toTopBtn) {
+      y > 700 ? toTopBtn.classList.add('visible') : toTopBtn.classList.remove('visible');
     }
     
-    // Scroll progress bar math
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    const p = h > 0 ? (y / h) * 100 : 0;
-    if (progressBar) progressBar.style.width = p + '%';
+    // Page Scroll Progress
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (y / docHeight) * 100 : 0;
+    if (progressBar) progressBar.style.width = scrollPercent + '%';
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
-  /* =========================================================
-     ANIMATED COUNTERS (Numbers go up)
-     ========================================================= */
+  /* =========================================================================
+     4. INTERSECTION OBSERVERS (Animations & Counters)
+     ========================================================================= */
+  // Counters Animation
   const counterIo = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
-      const target = parseInt(el.dataset.count, 10);
+      const targetVal = parseInt(el.dataset.count, 10);
       const suffix = el.dataset.suffix || '';
       const start = performance.now();
+      
       const animate = (now) => {
-        const t = Math.min(1, (now - start) / 1600);
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.floor(target * eased).toLocaleString() + suffix;
+        const t = Math.min(1, (now - start) / 2000); // 2 second duration
+        const eased = 1 - Math.pow(1 - t, 4); // Quartic ease out
+        const current = Math.floor(targetVal * eased);
+        
+        el.textContent = current.toLocaleString() + suffix;
         if (t < 1) requestAnimationFrame(animate);
       };
+      
       requestAnimationFrame(animate);
       counterIo.unobserve(el);
     });
-  }, { threshold: 0.4 });
-  $$('[data-count]').forEach((el) => counterIo.observe(el));
+  }, { threshold: 0.5 });
+  
+  $$('[data-count]').forEach(el => counterIo.observe(el));
 
-  /* =========================================================
-     REVEAL ON SCROLL (Fades in elements as you scroll down)
-     ========================================================= */
+  // Fade-up Reveal Animation
   const revealIo = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -133,139 +152,203 @@
         revealIo.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+  
   $$('.reveal-up').forEach(el => revealIo.observe(el));
 
-  /* =========================================================
-     CUSTOM CURSOR
-     ========================================================= */
+  /* =========================================================================
+     5. CUSTOM HARDWARE-ACCELERATED CURSOR
+     ========================================================================= */
   const cursor = $('#cursor');
   const cursorDot = $('#cursor-dot');
   let mx = 0, my = 0, cx = 0, cy = 0;
 
+  // Track mouse
   window.addEventListener('mousemove', (e) => {
-    mx = e.clientX; my = e.clientY;
-    if (cursorDot) { cursorDot.style.left = mx + 'px'; cursorDot.style.top = my + 'px'; }
-  });
-
-  const loop = () => {
-    cx += (mx - cx) * 0.18;
-    cy += (my - cy) * 0.18;
-    if (cursor) { cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px'; }
-    requestAnimationFrame(loop);
-  };
-  requestAnimationFrame(loop);
-
-  // Helper function to re-bind hover effects to dynamically added elements
-  const addCursorGrow = () => {
-    $$('a, button, input, summary, .chip, .job-card, .text-card, .contact-pill, .stat-card').forEach((el) => {
-      // Remove old listeners first to avoid duplicates (optional safety)
-      const growIn = () => cursor?.classList.add('grow');
-      const growOut = () => cursor?.classList.remove('grow');
-      el.addEventListener('mouseenter', growIn);
-      el.addEventListener('mouseleave', growOut);
-    });
-  };
-  addCursorGrow();
-
-  /* =========================================================
-     KEYBOARD SHORTCUT ("/" to search)
-     ========================================================= */
-  window.addEventListener('keydown', (e) => {
-    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
-      e.preventDefault();
-      $('#search-input')?.focus();
+    mx = e.clientX; 
+    my = e.clientY;
+    // Dot follows instantly
+    if (cursorDot) {
+      cursorDot.style.transform = `translate3d(calc(${mx}px - 50%), calc(${my}px - 50%), 0)`;
     }
   });
 
-  /* =========================================================
-     DYNAMIC JOB SEARCH & FILTERING (via jobs.json)
-     ========================================================= */
-  const state = { jobs: [], query: '', filter: 'all' };
-  
-  // Creates a 1 or 2 letter logo avatar from the company name
-  const initials = (name) => name.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase();
-  
-  const jobCard = (job) => `
-    <article class="job-card reveal-up">
-      <div class="job-company">
-        <div class="job-avatar">${initials(job.company)}</div>
-        <div>
-          <h4>${job.company}</h4>
-          <p>${job.location}</p>
-        </div>
-      </div>
-      <div class="job-role">${job.role}</div>
-      <div class="job-meta">
-        <span>🎓 ${job.batch}</span>
-        <span>💰 ${job.salary}</span>
-      </div>
-      <div class="job-skills">${job.skills.map(s => `<span class="job-skill">${s}</span>`).join('')}</div>
-      <a href="${job.applyLink}" target="_blank" class="job-apply">Apply ↗</a>
-    </article>
-  `;
+  // Ring trails behind using lerp (Linear Interpolation)
+  const renderCursor = () => {
+    cx += (mx - cx) * 0.15;
+    cy += (my - cy) * 0.15;
+    if (cursor) {
+      cursor.style.transform = `translate3d(calc(${cx}px - 50%), calc(${cy}px - 50%), 0)`;
+    }
+    requestAnimationFrame(renderCursor);
+  };
+  requestAnimationFrame(renderCursor);
 
-  // Search logic
-  const matches = (job) => {
-    const q = state.query.trim().toLowerCase();
-    const f = state.filter;
-    const hay = [
+  // Grow cursor on interactive elements
+  const bindCursorHovers = () => {
+    $$('a, button, input, summary, .chip, .job-card, .community-card, .stat-card').forEach((el) => {
+      el.addEventListener('mouseenter', () => cursor?.classList.add('grow'));
+      el.addEventListener('mouseleave', () => cursor?.classList.remove('grow'));
+    });
+  };
+  bindCursorHovers(); // Initial bind
+
+  /* =========================================================================
+     6. TOAST NOTIFICATION SYSTEM
+     ========================================================================= */
+  const toast = $('#toast');
+  let toastTimeout;
+
+  const showToast = (message, isError = false) => {
+    if (!toast) return;
+    clearTimeout(toastTimeout);
+    
+    toast.textContent = message;
+    toast.style.borderColor = isError ? '#ef4444' : '#10b981';
+    toast.classList.add('show');
+    
+    toastTimeout = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 4000);
+  };
+
+  // Bind to Newsletter Form
+  const newsletterForm = $('#newsletter-form');
+  newsletterForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = $('#email-input').value;
+    if(email) {
+      showToast('Successfully subscribed to referral drops!');
+      newsletterForm.reset();
+    }
+  });
+
+  /* =========================================================================
+     7. KEYBOARD SHORTCUTS & ACCESSIBILITY
+     ========================================================================= */
+  const searchInput = $('#search-input');
+  window.addEventListener('keydown', (e) => {
+    // Press '/' to focus search
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      searchInput?.focus();
+    }
+    // Press 'Escape' to blur search
+    if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.blur();
+    }
+  });
+
+  /* =========================================================================
+     8. DYNAMIC JOB BOARD ENGINE (Fetches jobs.json)
+     ========================================================================= */
+  const jobState = { jobs: [], query: '', filter: 'all' };
+  
+  // Random gradients for fallback company avatars
+  const gradients = ['bg-gradient-purple', 'bg-gradient-blue', 'bg-gradient-red', 'bg-orange', 'bg-green'];
+  
+  const getInitials = (name) => name.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+  
+  const buildJobCard = (job, index) => {
+    const avatarClass = gradients[index % gradients.length];
+    
+    return `
+      <article class="job-card glass-card reveal-up">
+        <div class="job-card-header">
+          <div class="company-info">
+            <div class="company-avatar ${avatarClass}">${getInitials(job.company)}</div>
+            <div>
+              <h4 class="company-name">${job.company}</h4>
+              <p class="job-location">${job.location}</p>
+            </div>
+          </div>
+          ${job.featured ? `<span class="badge badge-featured">Featured</span>` : ''}
+        </div>
+        <h3 class="job-role">${job.role}</h3>
+        <div class="job-meta">
+          <span class="meta-item">🎓 ${job.batch}</span>
+          <span class="meta-item">💰 ${job.salary}</span>
+        </div>
+        <div class="job-skills">
+          ${job.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+        </div>
+        <div class="job-actions">
+          <a href="${job.applyLink || '#'}" class="btn-apply" target="_blank" rel="noopener">
+            Request Referral <svg width="14" height="14"><use href="#icon-arrow-right"></use></svg>
+          </a>
+        </div>
+      </article>
+    `;
+  };
+
+  const isMatch = (job) => {
+    const searchQ = jobState.query.toLowerCase();
+    const filterF = jobState.filter.toLowerCase();
+    
+    const stringifiedJob = [
       job.company, job.role, job.location, job.batch, (job.skills || []).join(' ')
     ].join(' ').toLowerCase();
     
-    const okQ = !q || hay.includes(q);
-    const okF = f === 'all' || hay.includes(f.toLowerCase());
-    return okQ && okF;
+    const matchesSearch = !searchQ || stringifiedJob.includes(searchQ);
+    const matchesFilter = filterF === 'all' || stringifiedJob.includes(filterF);
+    
+    return matchesSearch && matchesFilter;
   };
 
-  const render = () => {
-    const jobsGrid = $('#jobs-grid');
-    const latest = state.jobs.filter(matches);
+  const renderJobs = () => {
+    const grid = $('#jobs-grid');
+    if (!grid) return;
     
-    if (jobsGrid) {
-      if (latest.length === 0) {
-        jobsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted);">No matches found for that search or filter.</p>';
-      } else {
-        jobsGrid.innerHTML = latest.map(j => jobCard(j)).join('');
-      }
+    const filteredJobs = jobState.jobs.filter(isMatch);
+    
+    if (filteredJobs.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column: 1/-1; padding: 40px; text-align: center; color: var(--text-muted);">
+          No matching referrals found. Try adjusting your search or filter.
+        </div>
+      `;
+    } else {
+      grid.innerHTML = filteredJobs.map((job, i) => buildJobCard(job, i)).join('');
     }
     
-    // Observe the newly created job cards so they fade in
+    // Bind observers and cursor hover to newly generated cards
     $$('.job-card').forEach(el => revealIo.observe(el));
-    // Make sure the custom cursor grows when hovering over new cards
-    addCursorGrow();
+    bindCursorHovers();
   };
 
-  // Search Input Event
-  const searchInput = $('#search-input');
+  // Search Input Listener
   searchInput?.addEventListener('input', (e) => {
-    state.query = e.target.value;
-    render();
+    jobState.query = e.target.value;
+    renderJobs();
   });
 
-  // Filter Chips Event
-  $$('.filter-chips .chip').forEach((chip) => {
+  // Filter Chips Listener
+  $$('.filter-chips .chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      $$('.filter-chips .chip').forEach((c) => c.classList.remove('active'));
+      $$('.filter-chips .chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      state.filter = chip.dataset.filter;
-      render();
+      jobState.filter = chip.dataset.filter;
+      renderJobs();
     });
   });
 
-  // Fetch the data and kick off render
+  // Fetch JSON and initialize board
   fetch('jobs.json')
-    .then((r) => r.json())
-    .then((data) => {
-      state.jobs = Array.isArray(data) ? data : [];
-      render();
+    .then(res => {
+      if(!res.ok) throw new Error("JSON not found");
+      return res.json();
+    })
+    .then(data => {
+      jobState.jobs = Array.isArray(data) ? data : [];
+      renderJobs();
     })
     .catch(err => {
-      console.error('Jobs load failed', err);
-      const jobsGrid = $('#jobs-grid');
-      if(jobsGrid) jobsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted);">Failed to load jobs. Make sure jobs.json exists in your repository.</p>';
+      console.warn("Could not load jobs.json. Using static fallback cards.", err);
+      // Leaves the static HTML cards inside #jobs-grid intact
+      bindCursorHovers(); 
     });
-    
-  // Run scroll check once on load in case user is not at top
-  onScroll();
+
+  // Initial trigger for scroll states
+  handleScroll();
+  
 })();

@@ -1,0 +1,45 @@
+/* All previous dark mode CSS from our earlier steps goes here */
+:root {
+  --bg-base: #060814;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+body { background: var(--bg-base); color: #fff; font-family: 'Inter', sans-serif; cursor: none; }
+
+/* Custom Cursor Styles */
+#cursor-dot {
+  position: fixed; width: 6px; height: 6px; background: #fff; border-radius: 50%;
+  pointer-events: none; transform: translate(-50%, -50%); z-index: 10000;
+}
+#cursor {
+  position: fixed; width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s; z-index: 9999;
+}
+#cursor.grow { width: 50px; height: 50px; background: rgba(255,255,255,0.1); }
+
+/* Preloader */
+#preloader {
+  position: fixed; inset: 0; background: var(--bg-base); z-index: 10001;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+#preloader.hide { opacity: 0; visibility: hidden; }
+
+/* Animations triggered by JS */
+.hero-title { transition: opacity 1s, transform 1s; transform: translateY(20px); }
+.hero-title.reveal { opacity: 1 !important; transform: translateY(0); }
+
+.hero-sub { transition: opacity 1s 0.2s, transform 1s 0.2s; transform: translateY(20px); }
+.hero-sub.in { opacity: 1 !important; transform: translateY(0); }
+
+.reveal-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.reveal-up.in { opacity: 1; transform: translateY(0); }
+
+/* Job Cards (Injected by JS) */
+.job-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 24px; border-radius: 12px; }
+.job-company { display: flex; gap: 12px; margin-bottom: 16px; }
+.job-avatar { width: 40px; height: 40px; background: #7c3aed; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: bold; }
+.job-skills { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+.job-skill { background: rgba(255,255,255,0.1); padding: 4px 10px; font-size: 0.75rem; border-radius: 20px; }
+.job-apply { display: inline-block; border: 1px solid #fff; padding: 6px 16px; border-radius: 20px; color: #fff; text-decoration: none; }

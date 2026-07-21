@@ -8,38 +8,27 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <!-- Note: You will need to add your own CSS here to style the page -->
-  <style>
-    body { font-family: 'Inter', sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
-    header { padding: 20px; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; }
-    nav a { margin: 0 10px; text-decoration: none; color: #333; }
-    section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid #eee; }
-    footer { padding: 40px 20px; background: #fafafa; text-align: center; }
-  </style>
+  <!-- Link to the custom CSS file -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Header & Navigation -->
   <header>
-    <a href="#home" style="text-decoration: none; font-weight: bold; font-size: 1.2rem; color: #000;">
-      <span><em>Referral</em>Hub</span>
+    <a href="#home">
+      <h2><em>Referral</em>Hub</h2>
     </a>
-
     <nav aria-label="Primary">
       <a href="#home">Home</a>
       <a href="#companies">Companies</a>
       <a href="#jobs">Latest Jobs</a>
       <a href="#premium">Premium</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
     </nav>
-
     <div>
-      <a href="https://t.me/topreferralhub" rel="noopener" target="_blank">
-        <span>Join Telegram</span>
-      </a>
+      <a href="https://t.me/topreferralhub" class="join-btn" rel="noopener" target="_blank">Join Telegram</a>
     </div>
   </header>
 
@@ -47,65 +36,56 @@
     <!-- Hero Section -->
     <section id="home">
       <div>
-        <span style="background: #eef; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">🟢 Live · 25,000+ members on Telegram</span>
+        <span class="live-badge">🟢 Live · 25,000+ members on Telegram</span>
       </div>
-      <h1 style="font-size: 3rem; margin-bottom: 10px;">
+      <h1>
         Land your dream job<br>
         through <em>employee</em><br>
         referrals.
       </h1>
-      <p style="font-size: 1.2rem; color: #666; max-width: 600px;">
+      <p>
         Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance and premium career opportunities.
       </p>
-      <div style="margin-top: 30px;">
-        <a href="#jobs" style="background: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-right: 15px;">Explore Referrals</a>
-        <a href="#premium" style="color: #000; text-decoration: none; font-weight: 500;">Premium Membership &rarr;</a>
+      <div class="cta-group">
+        <a href="#jobs" class="btn-primary">Explore Referrals</a>
+        <a href="#premium" class="btn-secondary">Premium Membership &rarr;</a>
       </div>
     </section>
 
     <!-- 01 - Manifesto -->
     <section aria-label="Manifesto">
-      <div>
-        <span style="color: #888;">01 — Manifesto</span>
+      <div class="section-header">
+        <span class="section-label">01 — Manifesto</span>
         <h2>A referral is worth<br><em>a thousand cold applications.</em></h2>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-        <article>
-          <span style="color: #888;">01</span>
+      <div class="grid-cards">
+        <article class="card">
+          <span>01</span>
           <h3>Verified employees</h3>
           <p>Every referrer is manually verified against their company profile. No middlemen, no scams — only genuine humans on the other side.</p>
         </article>
-        <article>
-          <span style="color: #888;">02</span>
+        <article class="card">
+          <span>02</span>
           <h3>Resume review</h3>
           <p>ATS-optimized, keyword-mapped and rewritten by hiring managers. Your résumé stops being a graveyard of buzzwords.</p>
         </article>
-        <article>
-          <span style="color: #888;">03</span>
+        <article class="card">
+          <span>03</span>
           <h3>Interview help</h3>
           <p>Mock interviews, DSA drills, system design walkthroughs and behavioural coaching from FAANG engineers.</p>
         </article>
-        <article>
-          <span style="color: #888;">04</span>
+        <article class="card">
+          <span>04</span>
           <h3>Career growth</h3>
           <p>Salary negotiation playbooks, promotion memos and long-term mentorship — long after you sign the offer letter.</p>
         </article>
       </div>
     </section>
 
-    <!-- 03 - Latest Jobs -->
-    <section id="jobs">
-      <div>
-        <span style="color: #888;">03 — Latest Referrals</span>
-        <h2>Fresh openings,<br><em>warm introductions.</em></h2>
-      </div>
-      <p><em>Job board integration goes here...</em></p>
-    </section>
-
     <!-- 04 - Premium -->
     <section id="premium">
-      <div style="background: #fafafa; padding: 40px; border-radius: 12px;">
-        <span style="color: #888;">04 — Premium</span>
+      <div class="premium-box">
+        <span class="section-label">04 — Premium</span>
         <h2>Referral<em>Hub</em> Premium</h2>
         <p>The unfair advantage. Every tool, every intro, every review — for the ones who mean it.</p>
         <ul>
@@ -116,53 +96,40 @@
           <li>LinkedIn Review</li>
           <li>Priority Referral</li>
         </ul>
-        <br>
-        <a href="https://forms.gle/qN16cbBesF5RVoKr7" rel="noopener" target="_blank" style="background: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px;">Join Premium</a>
+        <a href="https://forms.gle/qN16cbBesF5RVoKr7" class="btn-light" rel="noopener" target="_blank">Join Premium</a>
       </div>
-    </section>
-
-    <!-- 05 - How it works -->
-    <section>
-      <div>
-        <span style="color: #888;">05 — How it works</span>
-        <h2>Six steps<br><em>from click to offer.</em></h2>
-      </div>
-      <ol style="line-height: 2;">
-        <li><strong>Find a job:</strong> Browse openings from 150+ verified companies.</li>
-        <li><strong>Request referral:</strong> One-click request goes straight to a verified employee.</li>
-        <li><strong>Résumé reviewed:</strong> An engineer reads your resume, not a robot.</li>
-        <li><strong>Referral submitted:</strong> Your profile is submitted through internal channels.</li>
-        <li><strong>Interview prep:</strong> DSA, system design and behavioural — with mentors.</li>
-        <li><strong>Get hired:</strong> Sign the offer, negotiate the number, celebrate.</li>
-      </ol>
     </section>
 
     <!-- FAQ -->
     <section>
-      <div>
-        <span style="color: #888;">07 — FAQ</span>
+      <div class="section-header">
+        <span class="section-label">07 — FAQ</span>
         <h2>Questions,<br><em>honestly answered.</em></h2>
       </div>
       <div>
-        <details style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-          <summary style="font-weight: bold; cursor: pointer;">Is Referral Hub free?</summary>
-          <p style="margin-top: 10px;">Yes. Core referrals, the job board and the Telegram community are 100% free. Premium is optional for hands-on mentorship and priority referrals.</p>
+        <details>
+          <summary>Is Referral Hub free?</summary>
+          <p>Yes. Core referrals, the job board and the Telegram community are 100% free. Premium is optional for hands-on mentorship and priority referrals.</p>
         </details>
-        <details style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-          <summary style="font-weight: bold; cursor: pointer;">How do referrals work?</summary>
-          <p style="margin-top: 10px;">You pick a role, hit "Request Referral", we route your résumé to a verified employee at that company, and they submit it through the official internal referral portal.</p>
+        <details>
+          <summary>How do referrals work?</summary>
+          <p>You pick a role, hit "Request Referral", we route your résumé to a verified employee at that company, and they submit it through the official internal referral portal.</p>
+        </details>
+        <details>
+          <summary>What is Premium?</summary>
+          <p>Premium bundles priority referrals, a full résumé rewrite, ATS optimization, LinkedIn review, mock interviews and 1:1 mentorship with senior engineers.</p>
         </details>
       </div>
     </section>
   </main>
 
   <footer>
-    <div style="margin-bottom: 20px;">
+    <div>
       <h2><em>Referral</em>Hub</h2>
       <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
     </div>
-    <div>
-      <span>Referral Hub © 2026</span> | 
+    <div class="footer-bottom">
+      <span>Referral Hub © 2026</span>
       <span>Made with ☕ &amp; warm intros.</span>
     </div>
   </footer>

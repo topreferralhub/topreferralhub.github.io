@@ -1,0 +1,35 @@
+[
+  {
+    "company": "Google",
+    "location": "Bengaluru, IN",
+    "role": "Software Engineer II",
+    "batch": "2024 / 2025",
+    "salary": "₹45–65 LPA",
+    "skills": ["DSA", "System Design", "Go", "Python"],
+    "deadline": "2026-01-20",
+    "applyLink": "#",
+    "featured": true
+  },
+  {
+    "company": "Microsoft",
+    "location": "Hyderabad, IN",
+    "role": "Data Engineer",
+    "batch": "2023 / 2024",
+    "salary": "₹32–48 LPA",
+    "skills": ["Azure", "Spark", "SQL", "Python"],
+    "deadline": "2026-01-18",
+    "applyLink": "#",
+    "featured": true
+  },
+  {
+    "company": "Amazon",
+    "location": "Bengaluru, IN",
+    "role": "SDE I",
+    "batch": "2025",
+    "salary": "₹28–42 LPA",
+    "skills": ["Java", "AWS", "DSA"],
+    "deadline": "2026-02-04",
+    "applyLink": "#",
+    "featured": true
+  }
+]

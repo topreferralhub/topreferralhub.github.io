@@ -1,5 +1,6 @@
 /* =========================================================
    REFERRAL HUB — script.js
+   Vanilla JS. Lenis smooth scroll + IO + micro-interactions.
    ========================================================= */
 
 (() => {
@@ -8,7 +9,9 @@
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-  /* PRELOADER + HERO REVEAL */
+  /* =========================================================
+     PRELOADER + HERO REVEAL
+     ========================================================= */
   const preloader = $('#preloader');
   const barFill = $('#preloader-bar-fill');
   const barCount = $('#preloader-count');
@@ -18,21 +21,24 @@
     progress = Math.min(100, progress + Math.random() * 12 + 4);
     if (barFill) barFill.style.width = progress + '%';
     if (barCount) barCount.textContent = Math.floor(progress) + '%';
+    
     if (progress < 100) {
       setTimeout(tick, 90);
     } else {
       setTimeout(() => {
-        preloader && preloader.classList.add('hide');
+        if (preloader) preloader.classList.add('hide');
         const heroTitle = $('.hero-title');
-        heroTitle && heroTitle.classList.add('reveal');
+        if (heroTitle) heroTitle.classList.add('reveal');
         const heroSub = $('.hero-sub');
-        heroSub && heroSub.classList.add('in');
+        if (heroSub) heroSub.classList.add('in');
       }, 400);
     }
   };
   window.addEventListener('load', () => setTimeout(tick, 80));
 
-  /* LENIS SMOOTH SCROLL */
+  /* =========================================================
+     LENIS SMOOTH SCROLL
+     ========================================================= */
   let lenis = null;
   if (window.Lenis) {
     lenis = new window.Lenis({
@@ -44,20 +50,60 @@
     requestAnimationFrame(raf);
   }
 
-  /* NAVBAR + PROGRESS */
+  /* Smooth scroll for anchor links */
+  $$('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (!id || id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.scrollY - 80;
+      if (lenis) lenis.scrollTo(y, { duration: 1.4 });
+      else window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  /* To Top Button */
+  const toTop = $('#to-top');
+  toTop?.addEventListener('click', () => {
+    if (lenis) lenis.scrollTo(0, { duration: 1.6 });
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* =========================================================
+     NAVBAR + SCROLL PROGRESS
+     ========================================================= */
   const nav = $('#nav');
   const progressBar = $('#scroll-progress');
   
   const onScroll = () => {
     const y = window.scrollY;
-    nav && nav.classList.toggle('scrolled', y > 40);
+    
+    // Toggle Nav blur/bg
+    if (nav) nav.classList.toggle('scrolled', y > 40);
+    
+    // Toggle To-Top button visibility
+    if (toTop) {
+      if (y > 600) {
+        toTop.style.opacity = '1';
+        toTop.style.pointerEvents = 'auto';
+      } else {
+        toTop.style.opacity = '0';
+        toTop.style.pointerEvents = 'none';
+      }
+    }
+    
+    // Scroll progress bar math
     const h = document.documentElement.scrollHeight - window.innerHeight;
     const p = h > 0 ? (y / h) * 100 : 0;
     if (progressBar) progressBar.style.width = p + '%';
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  /* ANIMATED COUNTERS */
+  /* =========================================================
+     ANIMATED COUNTERS (Numbers go up)
+     ========================================================= */
   const counterIo = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -77,7 +123,9 @@
   }, { threshold: 0.4 });
   $$('[data-count]').forEach((el) => counterIo.observe(el));
 
-  /* REVEAL ON SCROLL (THIS WAS THE MISSING FIX) */
+  /* =========================================================
+     REVEAL ON SCROLL (Fades in elements as you scroll down)
+     ========================================================= */
   const revealIo = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -88,7 +136,9 @@
   }, { threshold: 0.1 });
   $$('.reveal-up').forEach(el => revealIo.observe(el));
 
-  /* CUSTOM CURSOR */
+  /* =========================================================
+     CUSTOM CURSOR
+     ========================================================= */
   const cursor = $('#cursor');
   const cursorDot = $('#cursor-dot');
   let mx = 0, my = 0, cx = 0, cy = 0;
@@ -106,8 +156,34 @@
   };
   requestAnimationFrame(loop);
 
-  /* LOAD JOBS */
-  const state = { jobs: [] };
+  // Helper function to re-bind hover effects to dynamically added elements
+  const addCursorGrow = () => {
+    $$('a, button, input, summary, .chip, .job-card, .text-card, .contact-pill, .stat-card').forEach((el) => {
+      // Remove old listeners first to avoid duplicates (optional safety)
+      const growIn = () => cursor?.classList.add('grow');
+      const growOut = () => cursor?.classList.remove('grow');
+      el.addEventListener('mouseenter', growIn);
+      el.addEventListener('mouseleave', growOut);
+    });
+  };
+  addCursorGrow();
+
+  /* =========================================================
+     KEYBOARD SHORTCUT ("/" to search)
+     ========================================================= */
+  window.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      $('#search-input')?.focus();
+    }
+  });
+
+  /* =========================================================
+     DYNAMIC JOB SEARCH & FILTERING (via jobs.json)
+     ========================================================= */
+  const state = { jobs: [], query: '', filter: 'all' };
+  
+  // Creates a 1 or 2 letter logo avatar from the company name
   const initials = (name) => name.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase();
   
   const jobCard = (job) => `
@@ -129,17 +205,67 @@
     </article>
   `;
 
-  const render = () => {
-    const jobsGrid = $('#jobs-grid');
-    if (jobsGrid) jobsGrid.innerHTML = state.jobs.map(j => jobCard(j)).join('');
-    // Ensure new job cards fade in correctly
-    $$('.job-card').forEach(el => revealIo.observe(el));
+  // Search logic
+  const matches = (job) => {
+    const q = state.query.trim().toLowerCase();
+    const f = state.filter;
+    const hay = [
+      job.company, job.role, job.location, job.batch, (job.skills || []).join(' ')
+    ].join(' ').toLowerCase();
+    
+    const okQ = !q || hay.includes(q);
+    const okF = f === 'all' || hay.includes(f.toLowerCase());
+    return okQ && okF;
   };
 
+  const render = () => {
+    const jobsGrid = $('#jobs-grid');
+    const latest = state.jobs.filter(matches);
+    
+    if (jobsGrid) {
+      if (latest.length === 0) {
+        jobsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted);">No matches found for that search or filter.</p>';
+      } else {
+        jobsGrid.innerHTML = latest.map(j => jobCard(j)).join('');
+      }
+    }
+    
+    // Observe the newly created job cards so they fade in
+    $$('.job-card').forEach(el => revealIo.observe(el));
+    // Make sure the custom cursor grows when hovering over new cards
+    addCursorGrow();
+  };
+
+  // Search Input Event
+  const searchInput = $('#search-input');
+  searchInput?.addEventListener('input', (e) => {
+    state.query = e.target.value;
+    render();
+  });
+
+  // Filter Chips Event
+  $$('.filter-chips .chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      $$('.filter-chips .chip').forEach((c) => c.classList.remove('active'));
+      chip.classList.add('active');
+      state.filter = chip.dataset.filter;
+      render();
+    });
+  });
+
+  // Fetch the data and kick off render
   fetch('jobs.json')
     .then((r) => r.json())
     .then((data) => {
-      state.jobs = data;
+      state.jobs = Array.isArray(data) ? data : [];
       render();
+    })
+    .catch(err => {
+      console.error('Jobs load failed', err);
+      const jobsGrid = $('#jobs-grid');
+      if(jobsGrid) jobsGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted);">Failed to load jobs. Make sure jobs.json exists in your repository.</p>';
     });
+    
+  // Run scroll check once on load in case user is not at top
+  onScroll();
 })();

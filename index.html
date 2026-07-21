@@ -1,558 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Referral Hub | India's Largest Employee Referral Platform</title>
-
-<meta
-name="description"
-content="Get Employee Referrals from Top Product Companies">
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referral Hub</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Note: You will need to add your own CSS here to style the page -->
+  <style>
+    body { font-family: 'Inter', sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; }
+    header { padding: 20px; display: flex; justify-content: space-between; border-bottom: 1px solid #eee; }
+    nav a { margin: 0 10px; text-decoration: none; color: #333; }
+    section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid #eee; }
+    footer { padding: 40px 20px; background: #fafafa; text-align: center; }
+  </style>
 </head>
-
 <body>
 
-<div class="background"></div>
-
-<!-- ================= NAVBAR ================= -->
-
-<nav>
-
-<div class="logo">
-
-<img src="logo_referralhub.jpg">
-
-<h2>Referral Hub</h2>
-
-</div>
-
-<ul>
-
-<li><a href="#">Home</a></li>
-
-<li><a href="#companies">Companies</a></li>
-
-<li><a href="#latest">Latest Jobs</a></li>
-
-<li><a href="#premium">Premium</a></li>
-
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
-<a
-href="https://t.me/topreferralhub"
-target="_blank"
-class="telegram-btn">
-
-Join Telegram
-
-</a>
-
-</nav>
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-<div class="hero-left">
-
-<h1>
-
-Land Your Dream Job
-
-<span>
-
-Through Employee Referrals
-
-</span>
-
-</h1>
-
-<p>
-
-Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance, and career opportunities.
-
-</p>
-
-<div class="hero-buttons">
-
-<a
-href="#latest"
-class="primary-btn">
-
-Explore Referrals
-
-</a>
-
-<a
-href="https://forms.gle/qN16cbBesF5RVoKr7"
-target="_blank"
-class="secondary-btn">
-
-Premium Membership
-
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<img src="logo_referralhub.jpg">
-
-</div>
-
-</section>
-
-<!-- ================= SEARCH ================= -->
-
-<section class="search-section">
-
-<h2>
-
-Search Referral Opportunities
-
-</h2>
-
-<input
-
-id="search"
-
-type="text"
-
-placeholder="Search Company, Role, Skills, Location..."
-
->
-
-</section>
-
-<!-- ================= STATS ================= -->
-
-<section class="stats">
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="150">
-
-0
-
-</h2>
-
-<p>
-
-Companies
-
-</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="3500">
-
-0
-
-</h2>
-
-<p>
-
-Referrals
-
-</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="25000">
-
-0
-
-</h2>
-
-<p>
-
-Telegram Members
-
-</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="98">
-
-0
-
-</h2>
-
-<p>
-
-Success %
-
-</p>
-
-</div>
-
-</section>
-
-<!-- ================= FEATURED COMPANIES ================= -->
-
-<section id="companies" class="companies">
-
-    <div class="section-header">
-
-        <h2>Featured Companies</h2>
-
-        <p>Explore opportunities from top companies across India.</p>
-
-    </div>
-
-    <div id="companyGrid" class="company-grid">
-
-    </div>
-
-</section>
-
-<!-- ================= LATEST REFERRALS ================= -->
-
-<section id="latest" class="latest">
-
-    <div class="section-header">
-
-        <h2>Latest Referral Opportunities</h2>
-
-        <p>Fresh openings shared by employees.</p>
-
-    </div>
-
-    <div id="jobGrid" class="job-list">
-
-    </div>
-
-</section>
-
-<!-- ================= PREMIUM ================= -->
-
-<section id="premium" class="premium">
-
-    <h2>ReferralHub Premium</h2>
-
-    <p>
-
-        Unlock premium employee referrals, resume reviews,
-        ATS optimization, interview guidance, priority support,
-        and exclusive job opportunities.
-
-    </p>
-
-    <div class="premium-features">
-
-        <div>✅ Employee Referrals</div>
-
-        <div>✅ Resume Review</div>
-
-        <div>✅ ATS Optimization</div>
-
-        <div>✅ Interview Preparation</div>
-
-        <div>✅ Exclusive Openings</div>
-
-        <div>✅ Priority Support</div>
-
-    </div>
-
-    <a
-        href="https://forms.gle/qN16cbBesF5RVoKr7"
-        target="_blank"
-        class="premium-btn">
-
-        Join Premium
-
+  <!-- Header & Navigation -->
+  <header>
+    <a href="#home" style="text-decoration: none; font-weight: bold; font-size: 1.2rem; color: #000;">
+      <span><em>Referral</em>Hub</span>
     </a>
 
-</section>
+    <nav aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#companies">Companies</a>
+      <a href="#jobs">Latest Jobs</a>
+      <a href="#premium">Premium</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-<!-- ================= WHY US ================= -->
-
-<section class="why-us">
-
-    <div class="section-header">
-
-        <h2>Why Referral Hub?</h2>
-
-        <p>Helping thousands of students connect with employees from leading companies.</p>
-
+    <div>
+      <a href="https://t.me/topreferralhub" rel="noopener" target="_blank">
+        <span>Join Telegram</span>
+      </a>
     </div>
+  </header>
 
-    <div class="features-grid">
+  <main>
+    <!-- Hero Section -->
+    <section id="home">
+      <div>
+        <span style="background: #eef; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">🟢 Live · 25,000+ members on Telegram</span>
+      </div>
+      <h1 style="font-size: 3rem; margin-bottom: 10px;">
+        Land your dream job<br>
+        through <em>employee</em><br>
+        referrals.
+      </h1>
+      <p style="font-size: 1.2rem; color: #666; max-width: 600px;">
+        Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance and premium career opportunities.
+      </p>
+      <div style="margin-top: 30px;">
+        <a href="#jobs" style="background: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-right: 15px;">Explore Referrals</a>
+        <a href="#premium" style="color: #000; text-decoration: none; font-weight: 500;">Premium Membership &rarr;</a>
+      </div>
+    </section>
 
-        <div class="feature-card">
+    <!-- 01 - Manifesto -->
+    <section aria-label="Manifesto">
+      <div>
+        <span style="color: #888;">01 — Manifesto</span>
+        <h2>A referral is worth<br><em>a thousand cold applications.</em></h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <article>
+          <span style="color: #888;">01</span>
+          <h3>Verified employees</h3>
+          <p>Every referrer is manually verified against their company profile. No middlemen, no scams — only genuine humans on the other side.</p>
+        </article>
+        <article>
+          <span style="color: #888;">02</span>
+          <h3>Resume review</h3>
+          <p>ATS-optimized, keyword-mapped and rewritten by hiring managers. Your résumé stops being a graveyard of buzzwords.</p>
+        </article>
+        <article>
+          <span style="color: #888;">03</span>
+          <h3>Interview help</h3>
+          <p>Mock interviews, DSA drills, system design walkthroughs and behavioural coaching from FAANG engineers.</p>
+        </article>
+        <article>
+          <span style="color: #888;">04</span>
+          <h3>Career growth</h3>
+          <p>Salary negotiation playbooks, promotion memos and long-term mentorship — long after you sign the offer letter.</p>
+        </article>
+      </div>
+    </section>
 
-            <i class="fas fa-user-check"></i>
+    <!-- 03 - Latest Jobs -->
+    <section id="jobs">
+      <div>
+        <span style="color: #888;">03 — Latest Referrals</span>
+        <h2>Fresh openings,<br><em>warm introductions.</em></h2>
+      </div>
+      <p><em>Job board integration goes here...</em></p>
+    </section>
 
-            <h3>Verified Referrals</h3>
+    <!-- 04 - Premium -->
+    <section id="premium">
+      <div style="background: #fafafa; padding: 40px; border-radius: 12px;">
+        <span style="color: #888;">04 — Premium</span>
+        <h2>Referral<em>Hub</em> Premium</h2>
+        <p>The unfair advantage. Every tool, every intro, every review — for the ones who mean it.</p>
+        <ul>
+          <li>Employee Referrals</li>
+          <li>Resume Review</li>
+          <li>ATS Optimization</li>
+          <li>Interview Preparation</li>
+          <li>LinkedIn Review</li>
+          <li>Priority Referral</li>
+        </ul>
+        <br>
+        <a href="https://forms.gle/qN16cbBesF5RVoKr7" rel="noopener" target="_blank" style="background: #000; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 6px;">Join Premium</a>
+      </div>
+    </section>
 
-            <p>Real employee referrals from trusted professionals.</p>
+    <!-- 05 - How it works -->
+    <section>
+      <div>
+        <span style="color: #888;">05 — How it works</span>
+        <h2>Six steps<br><em>from click to offer.</em></h2>
+      </div>
+      <ol style="line-height: 2;">
+        <li><strong>Find a job:</strong> Browse openings from 150+ verified companies.</li>
+        <li><strong>Request referral:</strong> One-click request goes straight to a verified employee.</li>
+        <li><strong>Résumé reviewed:</strong> An engineer reads your resume, not a robot.</li>
+        <li><strong>Referral submitted:</strong> Your profile is submitted through internal channels.</li>
+        <li><strong>Interview prep:</strong> DSA, system design and behavioural — with mentors.</li>
+        <li><strong>Get hired:</strong> Sign the offer, negotiate the number, celebrate.</li>
+      </ol>
+    </section>
 
-        </div>
+    <!-- FAQ -->
+    <section>
+      <div>
+        <span style="color: #888;">07 — FAQ</span>
+        <h2>Questions,<br><em>honestly answered.</em></h2>
+      </div>
+      <div>
+        <details style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+          <summary style="font-weight: bold; cursor: pointer;">Is Referral Hub free?</summary>
+          <p style="margin-top: 10px;">Yes. Core referrals, the job board and the Telegram community are 100% free. Premium is optional for hands-on mentorship and priority referrals.</p>
+        </details>
+        <details style="margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+          <summary style="font-weight: bold; cursor: pointer;">How do referrals work?</summary>
+          <p style="margin-top: 10px;">You pick a role, hit "Request Referral", we route your résumé to a verified employee at that company, and they submit it through the official internal referral portal.</p>
+        </details>
+      </div>
+    </section>
+  </main>
 
-        <div class="feature-card">
-
-            <i class="fas fa-file-alt"></i>
-
-            <h3>Resume Guidance</h3>
-
-            <p>Improve your ATS score with expert suggestions.</p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fas fa-comments"></i>
-
-            <h3>Interview Help</h3>
-
-            <p>Preparation resources and guidance before interviews.</p>
-
-        </div>
-
-        <div class="feature-card">
-
-            <i class="fas fa-rocket"></i>
-
-            <h3>Career Growth</h3>
-
-            <p>Stay updated with the latest referral opportunities.</p>
-
-        </div>
-
+  <footer>
+    <div style="margin-bottom: 20px;">
+      <h2><em>Referral</em>Hub</h2>
+      <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
     </div>
-
-</section>
-
-<!-- ================= TESTIMONIALS ================= -->
-
-<section class="testimonials">
-
-    <div class="section-header">
-
-        <h2>Success Stories</h2>
-
-        <p>What our community says about Referral Hub.</p>
-
+    <div>
+      <span>Referral Hub © 2026</span> | 
+      <span>Made with ☕ &amp; warm intros.</span>
     </div>
-
-    <div class="testimonial-grid">
-
-        <div class="testimonial-card">
-
-            <p>
-                "Referral Hub helped me secure an interview at a product-based company. The resume review and employee referral made a huge difference."
-            </p>
-
-            <h4>— Software Engineer</h4>
-
-        </div>
-
-        <div class="testimonial-card">
-
-            <p>
-                "The Telegram community is always updated with verified referral opportunities. Highly recommended!"
-            </p>
-
-            <h4>— Final Year Student</h4>
-
-        </div>
-
-        <div class="testimonial-card">
-
-            <p>
-                "Premium membership was worth it. I received resume feedback and interview guidance."
-            </p>
-
-            <h4>— Data Analyst</h4>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= FAQ ================= -->
-
-<section class="faq">
-
-    <div class="section-header">
-
-        <h2>Frequently Asked Questions</h2>
-
-    </div>
-
-    <div class="faq-item">
-
-        <h3>Is Referral Hub free?</h3>
-
-        <p>Yes. Most referral opportunities are shared free through our Telegram community.</p>
-
-    </div>
-
-    <div class="faq-item">
-
-        <h3>What is Premium?</h3>
-
-        <p>Premium members receive resume reviews, interview guidance, ATS optimization and exclusive referral opportunities.</p>
-
-    </div>
-
-    <div class="faq-item">
-
-        <h3>Are referrals genuine?</h3>
-
-        <p>We only share opportunities received from verified employees and trusted contributors.</p>
-
-    </div>
-
-</section>
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact" class="contact">
-
-    <div class="section-header">
-
-        <h2>Connect With Us</h2>
-
-        <p>Join India's fastest growing referral community.</p>
-
-    </div>
-
-    <div class="contact-buttons">
-
-        <a href="https://t.me/topreferralhub" target="_blank" class="primary-btn">
-
-            <i class="fab fa-telegram"></i>
-
-            Telegram Channel
-
-        </a>
-
-        <a href="https://t.me/referralsandjob" target="_blank" class="secondary-btn">
-
-            <i class="fas fa-users"></i>
-
-            Community Group
-
-        </a>
-
-    </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="footer-content">
-
-        <div>
-
-            <img src="logo_referralhub.jpg" alt="Referral Hub Logo" width="70">
-
-            <h2>Referral Hub</h2>
-
-            <p>
-
-                India's trusted employee referral platform connecting students and professionals with opportunities from top companies.
-
-            </p>
-
-        </div>
-
-        <div>
-
-            <h3>Quick Links</h3>
-
-            <ul>
-
-                <li><a href="#">Home</a></li>
-
-                <li><a href="#companies">Companies</a></li>
-
-                <li><a href="#latest">Latest Jobs</a></li>
-
-                <li><a href="#premium">Premium</a></li>
-
-                <li><a href="#contact">Contact</a></li>
-
-            </ul>
-
-        </div>
-
-        <div>
-
-            <h3>Community</h3>
-
-            <ul>
-
-                <li>
-
-                    <a href="https://t.me/topreferralhub" target="_blank">
-
-                        Telegram Channel
-
-                    </a>
-
-                </li>
-
-                <li>
-
-                    <a href="https://t.me/referralsandjob" target="_blank">
-
-                        Discussion Group
-
-                    </a>
-
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-    <hr>
-
-    <p class="copyright">
-
-        © 2026 Referral Hub. All Rights Reserved.
-
-    </p>
-
-</footer>
-
-<script src="script.js"></script>
-
+  </footer>
 </body>
 </html>

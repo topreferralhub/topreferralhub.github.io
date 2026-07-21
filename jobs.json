@@ -1,12 +1,41 @@
 [
   {
+    "company": "Arcesium",
+    "location": "Hyderabad, IN",
+    "role": "Data Engineer",
+    "batch": "2026 / 2027",
+    "salary": "₹25–35 LPA",
+    "skills": ["Python", "SQL", "Data Warehousing", "Spark"],
+    "applyLink": "#",
+    "featured": true
+  },
+  {
+    "company": "Synchrony",
+    "location": "Bengaluru, IN",
+    "role": "Software Engineer",
+    "batch": "2025 / 2026",
+    "salary": "₹18–24 LPA",
+    "skills": ["Full-Stack", "Java", "React"],
+    "applyLink": "#",
+    "featured": true
+  },
+  {
+    "company": "Oracle",
+    "location": "Remote, IN",
+    "role": "Cloud Networking Engineer",
+    "batch": "Certified Pro",
+    "salary": "₹30–45 LPA",
+    "skills": ["OCI", "Networking", "Infrastructure", "Cloud"],
+    "applyLink": "#",
+    "featured": false
+  },
+  {
     "company": "Google",
     "location": "Bengaluru, IN",
     "role": "Software Engineer II",
     "batch": "2024 / 2025",
     "salary": "₹45–65 LPA",
     "skills": ["DSA", "System Design", "Go", "Python"],
-    "deadline": "2026-01-20",
     "applyLink": "#",
     "featured": true
   },
@@ -14,55 +43,80 @@
     "company": "Microsoft",
     "location": "Hyderabad, IN",
     "role": "Data Engineer",
-    "batch": "2023 / 2024",
+    "batch": "2024",
     "salary": "₹32–48 LPA",
     "skills": ["Azure", "Spark", "SQL", "Python"],
-    "deadline": "2026-01-18",
     "applyLink": "#",
-    "featured": true
+    "featured": false
   },
   {
     "company": "Amazon",
     "location": "Bengaluru, IN",
     "role": "SDE I",
-    "batch": "2025",
+    "batch": "2025 / 2026",
     "salary": "₹28–42 LPA",
     "skills": ["Java", "AWS", "DSA"],
-    "deadline": "2026-02-04",
+    "applyLink": "#",
+    "featured": false
+  },
+  {
+    "company": "SAP",
+    "location": "Bengaluru, IN",
+    "role": "Cloud Integration Engineer",
+    "batch": "2024 / 2025",
+    "salary": "₹22–32 LPA",
+    "skills": ["SAP Business Suite", "Java", "Cloud", "REST"],
+    "applyLink": "#",
+    "featured": false
+  },
+  {
+    "company": "Nutanix",
+    "location": "Pune, IN",
+    "role": "Cloud Engineer",
+    "batch": "2025",
+    "salary": "₹26–38 LPA",
+    "skills": ["AWS", "Virtualization", "Python", "Cloud"],
+    "applyLink": "#",
+    "featured": false
+  },
+  {
+    "company": "EY",
+    "location": "Gurugram, IN",
+    "role": "Product Manager",
+    "batch": "2023 / 2024",
+    "salary": "₹20–30 LPA",
+    "skills": ["Product", "Strategy", "Agile", "WMS"],
     "applyLink": "#",
     "featured": true
   },
   {
-    "company": "Adobe",
-    "location": "Noida, IN",
-    "role": "ML Engineer",
-    "batch": "2023 / 2024",
-    "salary": "₹35–50 LPA",
-    "skills": ["Python", "TensorFlow", "C++"],
-    "deadline": "2026-01-25",
-    "applyLink": "#",
-    "featured": false
-  },
-  {
-    "company": "Salesforce",
-    "location": "Hyderabad, IN",
-    "role": "Software Engineer",
+    "company": "Meta",
+    "location": "Remote, UK",
+    "role": "Machine Learning Engineer",
     "batch": "2024",
-    "salary": "₹30–45 LPA",
-    "skills": ["Java", "Spring Boot", "React"],
-    "deadline": "2026-02-10",
+    "salary": "£85–120k",
+    "skills": ["PyTorch", "Python", "ML", "System Design"],
     "applyLink": "#",
     "featured": false
   },
   {
-    "company": "Oracle",
+    "company": "Goldman Sachs",
     "location": "Bengaluru, IN",
-    "role": "Cloud Engineer",
-    "batch": "2022 / 2023",
-    "salary": "₹25–40 LPA",
-    "skills": ["OCI", "Linux", "Networking"],
-    "deadline": "2026-02-15",
+    "role": "Analyst",
+    "batch": "2026",
+    "salary": "₹22–28 LPA",
+    "skills": ["SQL", "Finance", "Excel", "Data Modeling"],
     "applyLink": "#",
     "featured": false
+  },
+  {
+    "company": "Stripe",
+    "location": "Remote, IN",
+    "role": "Backend Engineer",
+    "batch": "2024 / 2025",
+    "salary": "₹40–60 LPA",
+    "skills": ["Ruby", "Go", "API Design", "Software Engineer"],
+    "applyLink": "#",
+    "featured": true
   }
 ]

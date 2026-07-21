@@ -13,7 +13,8 @@
   <!-- Lenis for Smooth Scrolling -->
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
   
-  <link rel="stylesheet" href="style.css?v=1">
+  <!-- Cache-busting CSS link to force the browser to load the styles -->
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -49,7 +50,7 @@
         <a href="#companies">Companies</a>
         <a href="#jobs">Latest Jobs</a>
         <a href="#premium">Premium</a>
-        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
       <a href="https://t.me/topreferralhub" class="btn-primary ripple" target="_blank">
         Join Telegram
@@ -91,8 +92,17 @@
       </div>
     </section>
 
+    <!-- SCROLL MARQUEE -->
+    <div class="scroll-label reveal-up"><span>SCROLL</span></div>
+    <div class="marquee-container reveal-up">
+      <div class="marquee-track">
+        <span>Accenture ✦ TCS ✦ Wipro ✦ IBM ✦ Google ✦ Microsoft ✦ Amazon ✦ Meta ✦ Apple ✦ Netflix</span>
+        <span>Accenture ✦ TCS ✦ Wipro ✦ IBM ✦ Google ✦ Microsoft ✦ Amazon ✦ Meta ✦ Apple ✦ Netflix</span>
+      </div>
+    </div>
+
     <!-- STATS -->
-    <section class="stats-grid container">
+    <section class="stats-grid container reveal-up">
       <div class="glass-card stat-card">
         <h2 data-count="150" data-suffix="+">0</h2>
         <p>Companies</p>
@@ -125,23 +135,44 @@
         <div class="glass-card text-card">
           <span class="card-num">02</span>
           <h3>Resume review</h3>
-          <p>ATS-optimized, keyword-mapped and rewritten by hiring managers.</p>
+          <p>ATS-optimized, keyword-mapped and rewritten by hiring managers. Your résumé stops being a graveyard of buzzwords.</p>
         </div>
         <div class="glass-card text-card">
           <span class="card-num">03</span>
           <h3>Interview help</h3>
-          <p>Mock interviews, DSA drills, system design walkthroughs from FAANG engineers.</p>
+          <p>Mock interviews, DSA drills, system design walkthroughs and behavioural coaching from FAANG engineers.</p>
         </div>
         <div class="glass-card text-card">
           <span class="card-num">04</span>
           <h3>Career growth</h3>
-          <p>Salary negotiation playbooks, promotion memos and long-term mentorship.</p>
+          <p>Salary negotiation playbooks, promotion memos and long-term mentorship — long after you sign the offer letter.</p>
         </div>
       </div>
     </section>
 
+    <!-- FEATURED / SEARCH -->
+    <section id="companies" class="container padding-y reveal-up">
+      <div class="section-tag">02 — FEATURED COMPANIES</div>
+      <h2 class="section-title">Referrals from the<br><span class="serif-italic">world's best teams.</span></h2>
+      
+      <div class="search-bar glass-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="search-input" placeholder="Search companies, roles, skills or locations...">
+        <span class="shortcut-key">Press /</span>
+      </div>
+
+      <div class="filter-tags filter-chips">
+        <span class="filter-tag chip active" data-filter="all">All</span>
+        <span class="filter-tag chip" data-filter="software engineer">Software Engineer</span>
+        <span class="filter-tag chip" data-filter="data engineer">Data Engineer</span>
+        <span class="filter-tag chip" data-filter="data scientist">Data Scientist</span>
+        <span class="filter-tag chip" data-filter="ml">ML</span>
+        <span class="filter-tag chip" data-filter="analyst">Analyst</span>
+      </div>
+    </section>
+
     <!-- JOBS SECTION (Dynamic) -->
-    <section id="jobs" class="container padding-y">
+    <section id="jobs" class="container padding-y reveal-up">
       <div class="section-tag">03 — LATEST REFERRALS</div>
       <h2 class="section-title">Fresh openings,<br><span class="serif-italic">warm introductions.</span></h2>
       
@@ -162,17 +193,139 @@
             <li><span class="check">✓</span> Employee Referrals</li>
             <li><span class="check">✓</span> ATS Optimization</li>
             <li><span class="check">✓</span> LinkedIn Review</li>
+            <li><span class="check">✓</span> Exclusive Openings</li>
           </ul>
           <ul>
             <li><span class="check">✓</span> Resume Review</li>
             <li><span class="check">✓</span> Interview Preparation</li>
             <li><span class="check">✓</span> Priority Referral</li>
+            <li><span class="check">✓</span> One-to-One Guidance</li>
           </ul>
         </div>
-        <button class="btn-solid">Join Premium ↗</button>
+        <a href="https://forms.gle/qN16cbBesF5RVoKr7" target="_blank" class="btn-solid">Join Premium ↗</a>
       </div>
     </section>
 
+    <!-- TESTIMONIALS -->
+    <section class="container padding-y reveal-up">
+      <div class="section-tag">06 — TESTIMONIALS</div>
+      <h2 class="section-title">Real people,<br><span class="serif-italic">real offer letters.</span></h2>
+      
+      <div class="grid-2">
+        <div class="glass-card testimonial-card">
+          <blockquote>"Got a Microsoft referral in 48 hours. The résumé review alone was worth the wait."</blockquote>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=5" alt="Avatar">
+            <div>
+              <strong>Ananya Rao</strong>
+              <span>Software Engineer · Bengaluru</span>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card testimonial-card">
+          <blockquote>"As a fresher I didn't stand a chance cold. Referral Hub literally rewrote my career."</blockquote>
+          <div class="user-info">
+            <img src="https://i.pravatar.cc/100?img=11" alt="Avatar">
+            <div>
+              <strong>Rohit Menon</strong>
+              <span>Final-year student · IIT-M</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container padding-y faq-section reveal-up">
+      <div class="section-tag">07 — FAQ</div>
+      <h2 class="section-title">Questions,<br><span class="serif-italic">honestly answered.</span></h2>
+      
+      <div class="faq-list">
+        <details class="glass-card">
+          <summary>Is Referral Hub free? <span class="icon">+</span></summary>
+          <p>Yes. Core referrals, the job board and the Telegram community are 100% free. Premium is optional.</p>
+        </details>
+        <details class="glass-card">
+          <summary>How do referrals work? <span class="icon">+</span></summary>
+          <p>You pick a role, hit request, and we route it to a verified employee to submit through their internal portal.</p>
+        </details>
+        <details class="glass-card">
+          <summary>What is Premium? <span class="icon">+</span></summary>
+          <p>Premium includes resume rewrites, priority referrals, mock interviews, and direct mentorship.</p>
+        </details>
+        <details class="glass-card">
+          <summary>Are referrals genuine? <span class="icon">+</span></summary>
+          <p>Every referrer is manually verified using their corporate email and LinkedIn.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="container padding-y reveal-up">
+      <div class="section-tag">08 — COMMUNITY</div>
+      <h2 class="section-title">Come for the referral,<br><span class="serif-italic">stay for the crew.</span></h2>
+      
+      <div class="grid-4">
+        <a href="https://t.me/topreferralhub" target="_blank" class="glass-card text-card link-card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon">✈</div>
+          <h3>Telegram Channel</h3>
+          <p>Daily referrals, hiring pings, cracked memes.</p>
+          <span class="action-text">Join →</span>
+        </a>
+        <a href="https://t.me/referralsandjob" target="_blank" class="glass-card text-card link-card" style="text-decoration:none; color:inherit;">
+          <div class="card-icon">💬</div>
+          <h3>Telegram Discussion</h3>
+          <p>Ask, banter, share OAs, get honest career takes.</p>
+          <span class="action-text">Open →</span>
+        </a>
+        <div class="glass-card text-card disabled">
+          <div class="card-icon">🎮</div>
+          <h3>Discord</h3>
+          <p>Voice rooms for mock interviews and DSA nights.</p>
+          <span class="action-text mute">Coming soon</span>
+        </div>
+        <div class="glass-card text-card disabled">
+          <div class="card-icon">📱</div>
+          <h3>WhatsApp</h3>
+          <p>City-wise pods. Referrals in your local time-zone.</p>
+          <span class="action-text mute">Coming soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container padding-y reveal-up">
+      <div class="grid-4 contact-grid">
+        <a href="https://t.me/topreferralhub" target="_blank" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
+          <span class="icon">✈</span>
+          <div>
+            <strong>Telegram</strong>
+            <span>@topreferralhub</span>
+          </div>
+        </a>
+        <a href="mailto:hello@referralhub.io" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
+          <span class="icon">✉</span>
+          <div>
+            <strong>Email</strong>
+            <span>hello@referralhub.io</span>
+          </div>
+        </a>
+        <a href="#" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
+          <span class="icon">in</span>
+          <div>
+            <strong>LinkedIn</strong>
+            <span>/referralhub</span>
+          </div>
+        </a>
+        <a href="#" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
+          <span class="icon">gh</span>
+          <div>
+            <strong>GitHub</strong>
+            <span>/referralhub</span>
+          </div>
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
@@ -183,8 +336,39 @@
         <h3>Referral<strong>Hub</strong></h3>
         <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
       </div>
+      <div>
+        <h4>QUICK LINKS</h4>
+        <a href="#home">Home</a>
+        <a href="#companies">Companies</a>
+        <a href="#jobs">Latest Jobs</a>
+        <a href="#premium">Premium</a>
+      </div>
+      <div>
+        <h4>COMMUNITY</h4>
+        <a href="https://t.me/topreferralhub" target="_blank">Telegram Channel</a>
+        <a href="https://t.me/referralsandjob" target="_blank">Telegram Discussion</a>
+        <a href="#" class="mute">Discord (soon)</a>
+        <a href="#" class="mute">WhatsApp (soon)</a>
+      </div>
+      <div>
+        <h4>RESOURCES</h4>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://forms.gle/qN16cbBesF5RVoKr7" target="_blank">Join Premium</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>Referral Hub © 2026</span>
+      <span>Made with ☕ & warm intros.</span>
     </div>
   </footer>
+
+  <!-- TO TOP BUTTON -->
+  <div id="to-top" class="scroll-top" style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; backdrop-filter: blur(10px); z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s;">↑</div>
+
+  <!-- Toast (Used by JS) -->
+  <div id="toast" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: #34d399; color: #000; padding: 12px 24px; border-radius: 30px; font-weight: 600; opacity: 0; transition: all 0.3s; z-index: 10000;"></div>
 
   <script src="script.js"></script>
 </body>

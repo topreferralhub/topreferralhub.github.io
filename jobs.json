@@ -1,0 +1,42 @@
+[
+  {
+    "company": "Capco",
+    "role": "Data Scientist",
+    "location": "Bengaluru, Chennai, Gurugram, Hyderabad, Pune",
+    "batch": "2025 & 2026",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "SQL",
+      "Time Series"
+    ],
+    "link": "https://job-boards.greenhouse.io/capco/jobs/7981841?gh_src=kq7afyv71us",
+    "status": "NEW"
+  },
+  {
+    "company": "Microsoft",
+    "role": "Software Engineer",
+    "location": "India",
+    "batch": "2025",
+    "skills": [
+      "DSA",
+      "C++",
+      "Azure"
+    ],
+    "link": "#",
+    "status": "Coming Soon"
+  },
+  {
+    "company": "Google",
+    "role": "Software Engineer",
+    "location": "India",
+    "batch": "2025",
+    "skills": [
+      "Algorithms",
+      "Python",
+      "System Design"
+    ],
+    "link": "#",
+    "status": "Coming Soon"
+  }
+]

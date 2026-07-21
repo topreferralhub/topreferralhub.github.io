@@ -24,7 +24,7 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none; /* Hide default cursor for custom cursor */
+  cursor: none; 
 }
 
 /* =========================================
@@ -88,11 +88,13 @@ header nav a:hover { color: white; }
 /* =========================================
    HERO SECTION
    ========================================= */
-.hero { max-width: 1200px; margin: 0 auto; padding: 180px 24px 100px; display: flex; justify-content: space-between; align-items: center; }
+.hero { max-width: 1200px; margin: 0 auto; padding: 180px 24px 100px; display: flex; justify-content: space-between; align-items: center; gap: 40px; }
 .hero-content { flex: 1; max-width: 600px; }
 .live-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 32px; }
 .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
-.hero h1 { font-size: 5.5rem; line-height: 0.95; letter-spacing: -0.04em; margin-bottom: 24px; }
+
+/* Fixed Font Size using Clamp */
+.hero h1 { font-size: clamp(3rem, 5vw + 1rem, 5.5rem); line-height: 1; letter-spacing: -0.04em; margin-bottom: 24px; }
 .hero-subtext { font-size: 1.1rem; color: var(--text-muted); max-width: 500px; }
 
 /* Hero Graphic */
@@ -161,3 +163,13 @@ footer { border-top: 1px solid var(--glass-border); padding: 60px 0; margin-top:
 .hero-sub.in { opacity: 1 !important; transform: translateY(0); }
 .reveal-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal-up.in { opacity: 1; transform: translateY(0); }
+
+/* MISSING RESPONSIVE FIXES ADDED HERE */
+@media (max-width: 900px) {
+  .hero { flex-direction: column; padding-top: 140px; text-align: center; }
+  .hero-content { max-width: 100%; margin-bottom: 40px; }
+  .hero-graphic { width: 100%; }
+  header { width: 95%; padding: 12px; }
+  header nav { display: none; }
+  .premium-features { flex-direction: column; gap: 16px; }
+}

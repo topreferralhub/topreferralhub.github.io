@@ -1,375 +1,874 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReferralHub - Land your dream job</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>ReferralHub | Premium Employee Referrals & Career Growth</title>
+  <meta name="description" content="ReferralHub connects professionals with verified FAANG employees for genuine job referrals, ATS resume reviews, and premium interview guidance.">
+  <meta name="theme-color" content="#060814">
   
-  <!-- Fonts -->
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://topreferralhub.github.io/">
+  <meta property="og:title" content="ReferralHub | Premium Employee Referrals">
+  <meta property="og:description" content="Land your dream job with verified referrals from top tech companies.">
+  <meta property="og:image" content="https://topreferralhub.github.io/og-image.jpg">
+  
+  <!-- Twitter Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://topreferralhub.github.io/">
+  <meta property="twitter:title" content="ReferralHub | Premium Employee Referrals">
+  <meta property="twitter:description" content="Land your dream job with verified referrals from top tech companies.">
+  
+  <!-- Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="preload" href="style.css?v=5" as="style">
   
-  <!-- Lenis for Smooth Scrolling -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet">
   
-  <!-- Cache-busting CSS link to force the browser to load the styles -->
-  <link rel="stylesheet" href="style.css?v=3">
+  <!-- Smooth Scrolling Engine -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js" defer></script>
+  
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=5">
+
+  <!-- JSON-LD Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://topreferralhub.github.io/#organization",
+        "name": "ReferralHub",
+        "url": "https://topreferralhub.github.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://topreferralhub.github.io/logo_referralhub.jpg"
+        },
+        "sameAs": [
+          "https://t.me/topreferralhub",
+          "https://linkedin.com/company/referralhub"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://topreferralhub.github.io/#website",
+        "url": "https://topreferralhub.github.io/",
+        "name": "ReferralHub",
+        "publisher": {
+          "@id": "https://topreferralhub.github.io/#organization"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Referral Hub free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Core referrals, the job board and the Telegram community are 100% free. Premium is optional."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do referrals work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You pick a role, hit request, and we route it to a verified employee to submit through their internal portal."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="theme-dark">
 
-  <!-- Custom Cursor -->
-  <div id="cursor-dot"></div>
-  <div id="cursor"></div>
+  <!-- =========================================================================
+       SVG SPRITE MAP (Modern practice for inline icon management)
+       ========================================================================= -->
+  <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+      </symbol>
+      <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+      </symbol>
+      <symbol id="icon-telegram" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.888-.662 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path>
+      </symbol>
+      <symbol id="icon-linkedin" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+      </symbol>
+      <symbol id="icon-briefcase" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v11a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"></path>
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
+      </symbol>
+      <symbol id="icon-code" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M16 18l6-6-6-6M8 6l-6 6 6 6M12 4l-4 16"></path>
+      </symbol>
+      <symbol id="icon-cloud" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M17.5 19h-11A4.5 4.5 0 012 13.114 4.5 4.5 0 016.5 9c.27 0 .532.025.783.073A6.002 6.002 0 0118.943 11.5c1.7 0 3.057 1.357 3.057 3.057 0 1.7-1.357 3.057-3.057 3.057h-1.443z"></path>
+      </symbol>
+      <symbol id="icon-database" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="5" rx="9" ry="3" fill="none" stroke="currentColor" stroke-width="2"></ellipse>
+        <path fill="none" stroke="currentColor" stroke-width="2" d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+        <path fill="none" stroke="currentColor" stroke-width="2" d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+      </symbol>
+    </defs>
+  </svg>
 
-  <!-- Preloader -->
-  <div id="preloader">
-    <div id="preloader-count">0%</div>
-    <div style="width: 200px; height: 2px; background: rgba(255,255,255,0.2); margin-top: 10px;">
-      <div id="preloader-bar-fill" style="height: 100%; background: #7c3aed; width: 0%;"></div>
+  <!-- =========================================================================
+       UI OVERLAYS & PROGRESS
+       ========================================================================= -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor" aria-hidden="true"></div>
+
+  <div id="preloader" aria-label="Loading site">
+    <div class="preloader-content">
+      <div id="preloader-count" class="h2">0%</div>
+      <div class="preloader-bar-wrapper">
+        <div id="preloader-bar-fill" class="preloader-bar-fill"></div>
+      </div>
+      <p class="preloader-text">Loading opportunities...</p>
     </div>
   </div>
 
-  <!-- Scroll Progress -->
-  <div id="scroll-progress" style="position: fixed; top: 0; left: 0; height: 3px; background: #7c3aed; z-index: 9999; width: 0%;"></div>
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Background Gradients & Grid -->
-  <div class="bg-glow-left"></div>
-  <div class="bg-glow-right"></div>
-  <div class="bg-grid"></div>
+  <!-- Ambient Background System -->
+  <div class="bg-system" aria-hidden="true">
+    <div class="bg-glow-left"></div>
+    <div class="bg-glow-right"></div>
+    <div class="bg-glow-center"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+  </div>
 
-  <!-- Floating Header -->
-  <header id="nav">
-    <div class="header-inner">
-      <a href="#home" class="logo">
-        <div class="logo-box"></div>
-        <span>Referral<strong>Hub</strong></span>
+  <!-- =========================================================================
+       NAVIGATION
+       ========================================================================= -->
+  <header id="nav" class="header" role="banner">
+    <div class="header-inner container">
+      <!-- Logo -->
+      <a href="#home" class="logo" aria-label="ReferralHub Home">
+        <div class="logo-wrapper">
+          <img src="logo_referralhub.jpg" alt="Referral Hub Icon" class="custom-logo" width="32" height="32">
+        </div>
+        <span class="logo-text">Referral<strong>Hub</strong></span>
       </a>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#companies">Companies</a>
-        <a href="#jobs">Latest Jobs</a>
-        <a href="#premium">Premium</a>
-        <a href="#contact">Contact</a>
+      
+      <!-- Desktop Menu -->
+      <nav class="desktop-nav" role="navigation" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="#companies" class="nav-link">Companies <svg class="chevron" width="12" height="12"><use href="#icon-arrow-right"></use></svg></a>
+            <div class="mega-menu">
+              <div class="mega-menu-grid">
+                <div class="mega-col">
+                  <span class="mega-title">Top Tech (FAANG)</span>
+                  <a href="#" class="mega-link">Google (Alphabet)</a>
+                  <a href="#" class="mega-link">Microsoft</a>
+                  <a href="#" class="mega-link">Amazon AWS</a>
+                  <a href="#" class="mega-link">Meta (Facebook)</a>
+                  <a href="#" class="mega-link">Apple</a>
+                </div>
+                <div class="mega-col">
+                  <span class="mega-title">Fintech & Finance</span>
+                  <a href="#" class="mega-link">Arcesium</a>
+                  <a href="#" class="mega-link">Synchrony</a>
+                  <a href="#" class="mega-link">Stripe</a>
+                  <a href="#" class="mega-link">Goldman Sachs</a>
+                  <a href="#" class="mega-link">J.P. Morgan</a>
+                </div>
+                <div class="mega-col">
+                  <span class="mega-title">Cloud & Enterprise</span>
+                  <a href="#" class="mega-link">Oracle (OCI)</a>
+                  <a href="#" class="mega-link">SAP</a>
+                  <a href="#" class="mega-link">Nutanix</a>
+                  <a href="#" class="mega-link">Salesforce</a>
+                  <a href="#" class="mega-link">ServiceNow</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item"><a href="#jobs" class="nav-link">Latest Jobs</a></li>
+          <li class="nav-item"><a href="#premium" class="nav-link highlight">Premium</a></li>
+          <li class="nav-item"><a href="#manifesto" class="nav-link">How it Works</a></li>
+        </ul>
       </nav>
-      <a href="https://t.me/topreferralhub" class="btn-primary ripple" target="_blank">
-        Join Telegram
-      </a>
+
+      <!-- CTA -->
+      <div class="header-actions">
+        <a href="https://t.me/topreferralhub" class="btn-secondary hidden-mobile" target="_blank" rel="noopener">
+          <svg width="18" height="18"><use href="#icon-telegram"></use></svg> Community
+        </a>
+        <a href="https://forms.gle/qN16cbBesF5RVoKr7" class="btn-primary ripple" target="_blank" rel="noopener">
+          Get Referral <svg width="16" height="16"><use href="#icon-arrow-right"></use></svg>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <!-- =========================================================================
+       MAIN CONTENT
+       ========================================================================= -->
+  <main id="main-content">
+    
     <!-- HERO SECTION -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="live-badge reveal-up">
-          <span class="dot"></span>
-          Live · 25,000+ members on Telegram
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="live-badge reveal-up" role="status">
+            <span class="pulse-dot"></span>
+            Live · 25,000+ members active on Telegram
+          </div>
+          
+          <h1 id="hero-heading" class="hero-title">
+            Land your<br>dream job<br>through <span class="serif-italic accent-gradient">employee</span><br>referrals.
+          </h1>
+          
+          <p class="hero-sub hero-subtext">
+            Stop throwing your resume into the void. Referral Hub connects students, freshers, and professionals directly with verified employees from top tech companies for genuine referrals, ATS resume reviews, and premium interview guidance.
+          </p>
+          
+          <div class="hero-cta-group reveal-up">
+            <a href="#jobs" class="btn-solid btn-lg">Browse Openings</a>
+            <a href="https://t.me/topreferralhub" target="_blank" rel="noopener" class="btn-outline btn-lg">
+              <svg width="20" height="20"><use href="#icon-telegram"></use></svg> Join Telegram Free
+            </a>
+          </div>
+
+          <div class="hero-trust reveal-up">
+            <div class="avatar-group">
+              <img src="https://i.pravatar.cc/100?img=1" alt="User" class="avatar-sm">
+              <img src="https://i.pravatar.cc/100?img=2" alt="User" class="avatar-sm">
+              <img src="https://i.pravatar.cc/100?img=3" alt="User" class="avatar-sm">
+              <img src="https://i.pravatar.cc/100?img=4" alt="User" class="avatar-sm">
+              <div class="avatar-sm avatar-more">+24k</div>
+            </div>
+            <span class="trust-text">Professionals hired in 2025</span>
+          </div>
         </div>
-        <h1 class="hero-title" style="opacity: 0;">
-          Land your<br>dream job<br>through <span class="serif-italic">employee</span><br>referrals.
-        </h1>
-        <p class="hero-sub hero-subtext" style="opacity: 0;">
-          Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance and premium career opportunities.
-        </p>
-      </div>
-      
-      <!-- CSS Graphic -->
-      <div class="hero-graphic reveal-up">
-        <div class="orbit-container">
-          <div class="center-cube"></div>
-          <div class="orbit-ring"></div>
-          <div class="pill google-pill">
-            <span class="logo-icon g-icon">G</span> Google · SDE II
-          </div>
-          <div class="pill ms-pill">
-            <span class="logo-icon m-icon">⊞</span> Microsoft · Data
-          </div>
-          <div class="pill amz-pill">
-            <span class="logo-icon a-icon">a</span> Amazon · ML
+        
+        <!-- Interactive 3D Hero Graphic -->
+        <div class="hero-graphic reveal-up" aria-hidden="true">
+          <div class="orbit-system">
+            <div class="center-node">
+              <img src="logo_referralhub.jpg" alt="Logo" class="center-node-img">
+            </div>
+            <div class="orbit-ring ring-1"></div>
+            <div class="orbit-ring ring-2"></div>
+            <div class="orbit-ring ring-3"></div>
+            
+            <!-- Orbiting Data Pills -->
+            <div class="orbit-pill pill-google float-1">
+              <span class="pill-icon g-icon">G</span> Software Engineer II
+            </div>
+            <div class="orbit-pill pill-ms float-2">
+              <span class="pill-icon m-icon">⊞</span> Data Engineer
+            </div>
+            <div class="orbit-pill pill-amazon float-3">
+              <span class="pill-icon a-icon">a</span> SDE I
+            </div>
+            <div class="orbit-pill pill-oracle float-4">
+              <span class="pill-icon o-icon"><svg width="14" height="14"><use href="#icon-cloud"></use></svg></span> OCI Networking
+            </div>
+            <div class="orbit-pill pill-sap float-5">
+              <span class="pill-icon s-icon"><svg width="14" height="14"><use href="#icon-database"></use></svg></span> SAP Business Suite
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SCROLL MARQUEE -->
-    <div class="scroll-label reveal-up"><span>SCROLL</span></div>
-    <div class="marquee-container reveal-up">
+    <!-- LOGO MARQUEE -->
+    <div class="scroll-indicator reveal-up">
+      <span class="scroll-text">WHERE OUR REFERRALS WORK</span>
+      <div class="scroll-line"></div>
+    </div>
+    
+    <div class="marquee-section reveal-up" aria-hidden="true">
       <div class="marquee-track">
-        <span>Accenture ✦ TCS ✦ Wipro ✦ IBM ✦ Google ✦ Microsoft ✦ Amazon ✦ Meta ✦ Apple ✦ Netflix</span>
-        <span>Accenture ✦ TCS ✦ Wipro ✦ IBM ✦ Google ✦ Microsoft ✦ Amazon ✦ Meta ✦ Apple ✦ Netflix</span>
+        <span class="mq-item">Google</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Microsoft</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Amazon</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Arcesium</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Synchrony</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Oracle</span><span class="mq-dot">✦</span>
+        <span class="mq-item">SAP</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Nutanix</span><span class="mq-dot">✦</span>
+        <span class="mq-item">EY</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Meta</span><span class="mq-dot">✦</span>
+        <!-- Duplicate for infinite scroll -->
+        <span class="mq-item">Google</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Microsoft</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Amazon</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Arcesium</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Synchrony</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Oracle</span><span class="mq-dot">✦</span>
+        <span class="mq-item">SAP</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Nutanix</span><span class="mq-dot">✦</span>
+        <span class="mq-item">EY</span><span class="mq-dot">✦</span>
+        <span class="mq-item">Meta</span><span class="mq-dot">✦</span>
       </div>
     </div>
 
-    <!-- STATS -->
-    <section class="stats-grid container reveal-up">
-      <div class="glass-card stat-card">
-        <h2 data-count="150" data-suffix="+">0</h2>
-        <p>Companies</p>
-      </div>
-      <div class="glass-card stat-card">
-        <h2 data-count="3500" data-suffix="+">0</h2>
-        <p>Employee Referrals</p>
-      </div>
-      <div class="glass-card stat-card">
-        <h2 data-count="25000" data-suffix="+">0</h2>
-        <p>Telegram Members</p>
-      </div>
-      <div class="glass-card stat-card">
-        <h2 data-count="98" data-suffix="%">0</h2>
-        <p>Success Rate</p>
+    <!-- STATS SECTION -->
+    <section class="stats-section container reveal-up" aria-label="Platform Statistics">
+      <div class="stats-grid">
+        <div class="glass-card stat-card">
+          <div class="stat-icon-wrapper"><svg width="24" height="24"><use href="#icon-briefcase"></use></svg></div>
+          <h2 class="stat-number"><span data-count="150" data-suffix="+">0</span></h2>
+          <p class="stat-label">Verified Companies</p>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-icon-wrapper"><svg width="24" height="24"><use href="#icon-check"></use></svg></div>
+          <h2 class="stat-number"><span data-count="4200" data-suffix="+">0</span></h2>
+          <p class="stat-label">Successful Referrals</p>
+        </div>
+        <div class="glass-card stat-card">
+          <div class="stat-icon-wrapper"><svg width="24" height="24"><use href="#icon-telegram"></use></svg></div>
+          <h2 class="stat-number"><span data-count="25000" data-suffix="+">0</span></h2>
+          <p class="stat-label">Community Members</p>
+        </div>
+        <div class="glass-card stat-card highlight-card">
+          <div class="stat-icon-wrapper"><svg width="24" height="24"><use href="#icon-star"></use></svg></div>
+          <h2 class="stat-number"><span data-count="98" data-suffix="%">0</span></h2>
+          <p class="stat-label">Success & Satisfaction</p>
+        </div>
       </div>
     </section>
 
-    <!-- MANIFESTO -->
-    <section class="container padding-y reveal-up">
-      <div class="section-tag">01 — MANIFESTO</div>
-      <h2 class="section-title">A referral is worth<br><span class="serif-italic">a thousand cold applications.</span></h2>
+    <!-- MANIFESTO / FEATURES -->
+    <section id="manifesto" class="manifesto-section container padding-y reveal-up">
+      <div class="section-header">
+        <span class="section-tag">01 — The Manifesto</span>
+        <h2 class="section-title">A referral is worth<br><span class="serif-italic text-gradient">a thousand cold applications.</span></h2>
+        <p class="section-desc">The job market is broken. ATS bots reject perfect candidates. We bypass the bot by putting your resume directly into the hands of decision-makers.</p>
+      </div>
       
-      <div class="grid-4">
-        <div class="glass-card text-card">
-          <span class="card-num">01</span>
-          <h3>Verified employees</h3>
-          <p>Every referrer is manually verified against their company profile. No middlemen, no scams — only genuine humans on the other side.</p>
+      <div class="manifesto-grid">
+        <div class="glass-card feature-card feature-large">
+          <div class="feature-top">
+            <span class="feature-num">01</span>
+            <div class="feature-icon bg-purple"><svg width="24" height="24"><use href="#icon-shield"></use></svg></div>
+          </div>
+          <h3 class="feature-title">Verified FAANG Employees</h3>
+          <p class="feature-text">Every single referrer in our network is manually verified against their corporate email and LinkedIn profile. There are no middlemen, no HR bots, and no scams. When you request a referral, a genuine employee from Google, Microsoft, or Amazon submits it through their internal company portal.</p>
+          <div class="feature-graphic fake-ui">
+            <div class="fake-ui-header"><span></span><span></span><span></span></div>
+            <div class="fake-ui-body">
+              <div class="fake-row">✅ Verification: john.doe@google.com</div>
+              <div class="fake-row">✅ Status: Active Employee (L5)</div>
+              <div class="fake-row highlight-row">Referral Portal Access: Granted</div>
+            </div>
+          </div>
         </div>
-        <div class="glass-card text-card">
-          <span class="card-num">02</span>
-          <h3>Resume review</h3>
-          <p>ATS-optimized, keyword-mapped and rewritten by hiring managers. Your résumé stops being a graveyard of buzzwords.</p>
+
+        <div class="glass-card feature-card">
+          <div class="feature-top">
+            <span class="feature-num">02</span>
+            <div class="feature-icon bg-blue"><svg width="24" height="24"><use href="#icon-code"></use></svg></div>
+          </div>
+          <h3 class="feature-title">ATS Resume Overhaul</h3>
+          <p class="feature-text">Your resume stops being a graveyard of buzzwords. Our hiring managers map your experience directly to the job description, optimizing for both ATS parsers and human eyes. We highlight metrics, not just responsibilities.</p>
         </div>
-        <div class="glass-card text-card">
-          <span class="card-num">03</span>
-          <h3>Interview help</h3>
-          <p>Mock interviews, DSA drills, system design walkthroughs and behavioural coaching from FAANG engineers.</p>
+
+        <div class="glass-card feature-card">
+          <div class="feature-top">
+            <span class="feature-num">03</span>
+            <div class="feature-icon bg-green"><svg width="24" height="24"><use href="#icon-database"></use></svg></div>
+          </div>
+          <h3 class="feature-title">Technical Interview Prep</h3>
+          <p class="feature-text">Mock interviews, DSA drills, and system design walkthroughs specifically tailored for your target company. Specializing in Data Engineering, Full-Stack, and Cloud architectures (AWS, OCI).</p>
         </div>
-        <div class="glass-card text-card">
-          <span class="card-num">04</span>
-          <h3>Career growth</h3>
-          <p>Salary negotiation playbooks, promotion memos and long-term mentorship — long after you sign the offer letter.</p>
+
+        <div class="glass-card feature-card feature-full">
+          <div class="feature-top">
+            <span class="feature-num">04</span>
+            <div class="feature-icon bg-orange"><svg width="24" height="24"><use href="#icon-star"></use></svg></div>
+          </div>
+          <div class="feature-content-row">
+            <div>
+              <h3 class="feature-title">End-to-End Career Growth</h3>
+              <p class="feature-text">Getting the offer is step one. We provide salary negotiation playbooks based on real-time market data, promotion memos, and long-term mentorship. Whether you are aiming for SDE I or Senior Data Engineer, you don't walk alone.</p>
+            </div>
+            <ul class="feature-list">
+              <li><svg width="16" height="16"><use href="#icon-check"></use></svg> Offer Negotiation Scripts</li>
+              <li><svg width="16" height="16"><use href="#icon-check"></use></svg> Equity & RSU Evaluation</li>
+              <li><svg width="16" height="16"><use href="#icon-check"></use></svg> 90-Day Onboarding Plan</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FEATURED / SEARCH -->
-    <section id="companies" class="container padding-y reveal-up">
-      <div class="section-tag">02 — FEATURED COMPANIES</div>
-      <h2 class="section-title">Referrals from the<br><span class="serif-italic">world's best teams.</span></h2>
+    <!-- LIVE JOB BOARD SECTION -->
+    <section id="companies" class="jobs-section container padding-y reveal-up">
+      <div class="section-header align-center">
+        <span class="section-tag">02 — Live Job Board</span>
+        <h2 class="section-title">Fresh openings,<br><span class="serif-italic text-gradient">warm introductions.</span></h2>
+      </div>
       
-      <div class="search-bar glass-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="search-input" placeholder="Search companies, roles, skills or locations...">
-        <span class="shortcut-key">Press /</span>
+      <!-- Interactive Search & Filter -->
+      <div class="search-container glass-card">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" width="20" height="20"><use href="#icon-search"></use></svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Search for Data Engineer, SDE, Cloud, SAP...">
+          <kbd class="shortcut-key">/</kbd>
+        </div>
       </div>
 
-      <div class="filter-tags filter-chips">
-        <span class="filter-tag chip active" data-filter="all">All</span>
-        <span class="filter-tag chip" data-filter="software engineer">Software Engineer</span>
-        <span class="filter-tag chip" data-filter="data engineer">Data Engineer</span>
-        <span class="filter-tag chip" data-filter="data scientist">Data Scientist</span>
-        <span class="filter-tag chip" data-filter="ml">ML</span>
-        <span class="filter-tag chip" data-filter="analyst">Analyst</span>
+      <div class="filter-chips" role="group" aria-label="Job filters">
+        <button class="chip active" data-filter="all">All Roles</button>
+        <button class="chip" data-filter="software engineer">Software Engineer</button>
+        <button class="chip" data-filter="data engineer">Data Engineer</button>
+        <button class="chip" data-filter="cloud">Cloud Integration</button>
+        <button class="chip" data-filter="product">Product Management</button>
       </div>
-    </section>
 
-    <!-- JOBS SECTION (Dynamic) -->
-    <section id="jobs" class="container padding-y reveal-up">
-      <div class="section-tag">03 — LATEST REFERRALS</div>
-      <h2 class="section-title">Fresh openings,<br><span class="serif-italic">warm introductions.</span></h2>
-      
-      <div id="jobs-grid" class="grid-3">
-        <!-- JS will inject the job cards from jobs.json here -->
-      </div>
-    </section>
-
-    <!-- PREMIUM -->
-    <section id="premium" class="container padding-y reveal-up">
-      <div class="premium-banner">
-        <div class="section-tag">04 — PREMIUM</div>
-        <h2>Referral<span class="serif-italic">Hub</span> Premium</h2>
-        <p>The unfair advantage. Every tool, every intro, every review — for the ones who mean it.</p>
+      <!-- Dynamic Grid Container -->
+      <div id="jobs-grid" class="jobs-grid" aria-live="polite">
         
-        <div class="premium-features">
-          <ul>
-            <li><span class="check">✓</span> Employee Referrals</li>
-            <li><span class="check">✓</span> ATS Optimization</li>
-            <li><span class="check">✓</span> LinkedIn Review</li>
-            <li><span class="check">✓</span> Exclusive Openings</li>
-          </ul>
-          <ul>
-            <li><span class="check">✓</span> Resume Review</li>
-            <li><span class="check">✓</span> Interview Preparation</li>
-            <li><span class="check">✓</span> Priority Referral</li>
-            <li><span class="check">✓</span> One-to-One Guidance</li>
-          </ul>
+        <!-- Static Fallback / SEO Content (Will be hydrated by JS) -->
+        <article class="job-card static-fallback glass-card">
+          <div class="job-card-header">
+            <div class="company-info">
+              <div class="company-avatar bg-gradient-blue">A</div>
+              <div>
+                <h4 class="company-name">Arcesium</h4>
+                <p class="job-location">Hyderabad, IN</p>
+              </div>
+            </div>
+            <span class="badge badge-featured">Featured</span>
+          </div>
+          <h3 class="job-role">Data Engineer</h3>
+          <div class="job-meta">
+            <span class="meta-item">🎓 Batch 2026/2027</span>
+            <span class="meta-item">💰 ₹25–35 LPA</span>
+          </div>
+          <div class="job-skills">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Data Warehousing</span>
+          </div>
+          <div class="job-actions">
+            <a href="#" class="btn-apply">Request Referral <svg width="14" height="14"><use href="#icon-arrow-right"></use></svg></a>
+          </div>
+        </article>
+
+        <article class="job-card static-fallback glass-card">
+          <div class="job-card-header">
+            <div class="company-info">
+              <div class="company-avatar bg-gradient-purple">S</div>
+              <div>
+                <h4 class="company-name">Synchrony</h4>
+                <p class="job-location">Bengaluru, IN</p>
+              </div>
+            </div>
+            <span class="badge badge-featured">Featured</span>
+          </div>
+          <h3 class="job-role">Software Engineer</h3>
+          <div class="job-meta">
+            <span class="meta-item">🎓 Batch 2025/2026</span>
+            <span class="meta-item">💰 ₹18–24 LPA</span>
+          </div>
+          <div class="job-skills">
+            <span class="skill-tag">Full-Stack</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">React</span>
+          </div>
+          <div class="job-actions">
+            <a href="#" class="btn-apply">Request Referral <svg width="14" height="14"><use href="#icon-arrow-right"></use></svg></a>
+          </div>
+        </article>
+
+        <article class="job-card static-fallback glass-card">
+          <div class="job-card-header">
+            <div class="company-info">
+              <div class="company-avatar bg-gradient-red">O</div>
+              <div>
+                <h4 class="company-name">Oracle</h4>
+                <p class="job-location">Remote, IN</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="job-role">Cloud Networking Engineer</h3>
+          <div class="job-meta">
+            <span class="meta-item">🎓 Certified Pro</span>
+            <span class="meta-item">💰 ₹30–45 LPA</span>
+          </div>
+          <div class="job-skills">
+            <span class="skill-tag">OCI</span>
+            <span class="skill-tag">Networking</span>
+            <span class="skill-tag">Infrastructure</span>
+          </div>
+          <div class="job-actions">
+            <a href="#" class="btn-apply">Request Referral <svg width="14" height="14"><use href="#icon-arrow-right"></use></svg></a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PREMIUM TIER SECTION -->
+    <section id="premium" class="premium-section container padding-y reveal-up">
+      <div class="premium-container glass-card">
+        <div class="premium-content">
+          <span class="section-tag premium-tag">03 — Premium Access</span>
+          <h2 class="premium-title">Referral<span class="serif-italic">Hub</span> Elite</h2>
+          <p class="premium-desc">The ultimate unfair advantage. Stop guessing and start converting. Every tool, every connection, every review — built specifically for professionals who are serious about breaking into top-tier tech.</p>
+          
+          <div class="premium-features-grid">
+            <ul class="premium-list">
+              <li>
+                <div class="check-circle"><svg width="14" height="14"><use href="#icon-check"></use></svg></div>
+                <div>
+                  <strong>Guaranteed Priority Referrals</strong>
+                  <p>Skip the queue. Your profile is routed directly to senior engineers.</p>
+                </div>
+              </li>
+              <li>
+                <div class="check-circle"><svg width="14" height="14"><use href="#icon-check"></use></svg></div>
+                <div>
+                  <strong>Complete Resume Rewrite</strong>
+                  <p>Line-by-line optimization for ATS scanners and human hiring managers.</p>
+                </div>
+              </li>
+              <li>
+                <div class="check-circle"><svg width="14" height="14"><use href="#icon-check"></use></svg></div>
+                <div>
+                  <strong>LinkedIn Profile Audit</strong>
+                  <p>Transform your profile into an inbound recruiter magnet.</p>
+                </div>
+              </li>
+            </ul>
+            <ul class="premium-list">
+              <li>
+                <div class="check-circle"><svg width="14" height="14"><use href="#icon-check"></use></svg></div>
+                <div>
+                  <strong>1:1 Mock Interviews</strong>
+                  <p>DSA and System Design practice with actual FAANG interviewers.</p>
+                </div>
+              </li>
+              <li>
+                <div class="check-circle"><svg width="14" height="14"><use href="#icon-check"></use></svg></div>
+                <div>
+                  <strong>Hidden Job Market Access</strong>
+                  <p>Apply to roles before they are officially posted on company boards.</p>
+                </div>
+              </li>
+              <li>
+                <div class="check-circle"><svg width="14" height="14"><use href="#icon-check"></use></svg></div>
+                <div>
+                  <strong>Continuous Mentorship</strong>
+                  <p>Dedicated career guidance from application to salary negotiation.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="premium-cta-wrapper">
+            <a href="https://forms.gle/qN16cbBesF5RVoKr7" target="_blank" rel="noopener" class="btn-solid btn-xl">
+              Apply for Elite Membership <svg width="20" height="20"><use href="#icon-arrow-right"></use></svg>
+            </a>
+            <span class="spots-left">Only 12 spots remaining for this cohort.</span>
+          </div>
         </div>
-        <a href="https://forms.gle/qN16cbBesF5RVoKr7" target="_blank" class="btn-solid">Join Premium ↗</a>
+        
+        <div class="premium-visual">
+          <div class="card-stack">
+            <div class="stack-card card-3"></div>
+            <div class="stack-card card-2"></div>
+            <div class="stack-card card-1 glass-card">
+              <div class="mock-profile">
+                <div class="mock-header">
+                  <div class="mock-avatar bg-gradient-purple">S</div>
+                  <div class="mock-name">
+                    <h4>Sangram K.</h4>
+                    <span>Incoming Data Engineer</span>
+                  </div>
+                </div>
+                <div class="mock-badges">
+                  <span class="mock-badge">OCI Certified</span>
+                  <span class="mock-badge">AWS Integrator</span>
+                </div>
+                <div class="mock-status">
+                  <div class="status-dot green"></div> Offer Accepted: Arcesium
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- TESTIMONIALS -->
-    <section class="container padding-y reveal-up">
-      <div class="section-tag">06 — TESTIMONIALS</div>
-      <h2 class="section-title">Real people,<br><span class="serif-italic">real offer letters.</span></h2>
+    <section class="testimonials-section container padding-y reveal-up">
+      <div class="section-header align-center">
+        <span class="section-tag">04 — Success Stories</span>
+        <h2 class="section-title">Real professionals,<br><span class="serif-italic text-gradient">real offer letters.</span></h2>
+      </div>
       
-      <div class="grid-2">
+      <div class="testimonials-grid masonry">
         <div class="glass-card testimonial-card">
-          <blockquote>"Got a Microsoft referral in 48 hours. The résumé review alone was worth the wait."</blockquote>
-          <div class="user-info">
-            <img src="https://i.pravatar.cc/100?img=5" alt="Avatar">
-            <div>
-              <strong>Ananya Rao</strong>
-              <span>Software Engineer · Bengaluru</span>
+          <div class="quote-mark">"</div>
+          <blockquote>I had applied to 50+ roles with zero callbacks. Referral Hub rewrote my resume and got me a direct referral to Microsoft. I was interviewing within 72 hours. The ROI on this platform is insane.</blockquote>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=32" alt="Ananya" class="author-img" loading="lazy">
+            <div class="author-info">
+              <strong>Ananya R.</strong>
+              <span>Data Engineer · Microsoft</span>
             </div>
           </div>
         </div>
+
         <div class="glass-card testimonial-card">
-          <blockquote>"As a fresher I didn't stand a chance cold. Referral Hub literally rewrote my career."</blockquote>
-          <div class="user-info">
-            <img src="https://i.pravatar.cc/100?img=11" alt="Avatar">
-            <div>
-              <strong>Rohit Menon</strong>
-              <span>Final-year student · IIT-M</span>
+          <div class="quote-mark">"</div>
+          <blockquote>As a fresher, breaking into tech seemed impossible. The community here didn't just give me a referral; they guided me through the entire SAP interview process.</blockquote>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=11" alt="Rohit" class="author-img" loading="lazy">
+            <div class="author-info">
+              <strong>Rohit M.</strong>
+              <span>Software Engineer · SAP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="quote-mark">"</div>
+          <blockquote>The mock interviews were brutal but necessary. By the time I sat down for my actual loop at Amazon, the questions felt easy. Premium membership is a cheat code.</blockquote>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=47" alt="Sara" class="author-img" loading="lazy">
+            <div class="author-info">
+              <strong>Sara I.</strong>
+              <span>SDE II · Amazon</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass-card testimonial-card">
+          <div class="quote-mark">"</div>
+          <blockquote>I used the salary negotiation playbook after getting my offer. My mentor told me exactly what to say to the recruiter. I ended up increasing my base salary by 20% and got a massive signing bonus. Unbelievable value.</blockquote>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/150?img=68" alt="Karthik" class="author-img" loading="lazy">
+            <div class="author-info">
+              <strong>Karthik I.</strong>
+              <span>Cloud Architect · Oracle</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="container padding-y faq-section reveal-up">
-      <div class="section-tag">07 — FAQ</div>
-      <h2 class="section-title">Questions,<br><span class="serif-italic">honestly answered.</span></h2>
-      
-      <div class="faq-list">
-        <details class="glass-card">
-          <summary>Is Referral Hub free? <span class="icon">+</span></summary>
-          <p>Yes. Core referrals, the job board and the Telegram community are 100% free. Premium is optional.</p>
-        </details>
-        <details class="glass-card">
-          <summary>How do referrals work? <span class="icon">+</span></summary>
-          <p>You pick a role, hit request, and we route it to a verified employee to submit through their internal portal.</p>
-        </details>
-        <details class="glass-card">
-          <summary>What is Premium? <span class="icon">+</span></summary>
-          <p>Premium includes resume rewrites, priority referrals, mock interviews, and direct mentorship.</p>
-        </details>
-        <details class="glass-card">
-          <summary>Are referrals genuine? <span class="icon">+</span></summary>
-          <p>Every referrer is manually verified using their corporate email and LinkedIn.</p>
-        </details>
+    <!-- FAQ SECTION -->
+    <section class="faq-section container padding-y reveal-up">
+      <div class="faq-layout">
+        <div class="faq-intro">
+          <span class="section-tag">05 — Knowledge Base</span>
+          <h2 class="section-title">Questions,<br><span class="serif-italic text-gradient">honestly answered.</span></h2>
+          <p class="faq-desc">Everything you need to know about how our referral engine operates, pricing, and what is required from you.</p>
+          <a href="mailto:hello@referralhub.io" class="btn-outline mt-4">Still have questions? Email us</a>
+        </div>
+        
+        <div class="faq-accordion" itemscope itemtype="https://schema.org/FAQPage">
+          
+          <!-- FAQ Item 1 -->
+          <details class="faq-item glass-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="faq-summary" itemprop="name">
+              Is Referral Hub completely free to use?
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes. Core referrals, access to the live job board, and membership in the Telegram community are 100% free. We believe everyone deserves a foot in the door. Our Premium tier is entirely optional and is designed for those who want personalized, 1-on-1 career coaching, resume rewrites, and mock interviews.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 2 -->
+          <details class="faq-item glass-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="faq-summary" itemprop="name">
+              Exactly how does the referral process work?
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">It's a simple 3-step process. First, browse the live job board and find a role that matches your skills. Second, submit a request via our platform. Third, our system routes your profile to a verified employee working at that specific company. They review your profile and submit you through their internal corporate portal. You will receive an official email directly from the company's ATS.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 3 -->
+          <details class="faq-item glass-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="faq-summary" itemprop="name">
+              Are the referrers actually genuine employees?
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Absolutely. Trust is our core metric. Every single referrer on our platform goes through a strict manual verification process. We cross-reference their corporate email addresses and LinkedIn profiles to ensure they are actively employed at the company they claim to represent.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 4 -->
+          <details class="faq-item glass-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="faq-summary" itemprop="name">
+              How long does it take to get a referral submitted?
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Standard requests are usually processed within 3-5 business days, depending on the volume and the specific employee's availability. Premium members receive priority routing, which guarantees submission or feedback within 48 hours.</p>
+            </div>
+          </details>
+
+          <!-- FAQ Item 5 -->
+          <details class="faq-item glass-card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <summary class="faq-summary" itemprop="name">
+              I am a fresher. Can I still get referred?
+              <span class="faq-icon"></span>
+            </summary>
+            <div class="faq-content" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes! We have a dedicated section on our job board specifically for freshers, university graduates (Batch 2026/2027), and early-career professionals. Many of our partner employees actively look to refer strong junior talent for entry-level roles and internships.</p>
+            </div>
+          </details>
+
+        </div>
       </div>
     </section>
 
-    <!-- COMMUNITY -->
-    <section class="container padding-y reveal-up">
-      <div class="section-tag">08 — COMMUNITY</div>
-      <h2 class="section-title">Come for the referral,<br><span class="serif-italic">stay for the crew.</span></h2>
-      
-      <div class="grid-4">
-        <a href="https://t.me/topreferralhub" target="_blank" class="glass-card text-card link-card" style="text-decoration:none; color:inherit;">
-          <div class="card-icon">✈</div>
-          <h3>Telegram Channel</h3>
-          <p>Daily referrals, hiring pings, cracked memes.</p>
-          <span class="action-text">Join →</span>
-        </a>
-        <a href="https://t.me/referralsandjob" target="_blank" class="glass-card text-card link-card" style="text-decoration:none; color:inherit;">
-          <div class="card-icon">💬</div>
-          <h3>Telegram Discussion</h3>
-          <p>Ask, banter, share OAs, get honest career takes.</p>
-          <span class="action-text">Open →</span>
-        </a>
-        <div class="glass-card text-card disabled">
-          <div class="card-icon">🎮</div>
-          <h3>Discord</h3>
-          <p>Voice rooms for mock interviews and DSA nights.</p>
-          <span class="action-text mute">Coming soon</span>
-        </div>
-        <div class="glass-card text-card disabled">
-          <div class="card-icon">📱</div>
-          <h3>WhatsApp</h3>
-          <p>City-wise pods. Referrals in your local time-zone.</p>
-          <span class="action-text mute">Coming soon</span>
-        </div>
+    <!-- COMMUNITY & SOCIAL -->
+    <section class="community-section container padding-y reveal-up">
+      <div class="section-header align-center">
+        <span class="section-tag">06 — The Network</span>
+        <h2 class="section-title">Come for the referral,<br><span class="serif-italic text-gradient">stay for the crew.</span></h2>
       </div>
-    </section>
+      
+      <div class="community-grid">
+        <a href="https://t.me/topreferralhub" target="_blank" rel="noopener" class="glass-card community-card link-card">
+          <div class="community-icon bg-blue"><svg width="32" height="32"><use href="#icon-telegram"></use></svg></div>
+          <h3 class="community-title">Telegram Broadcast Channel</h3>
+          <p class="community-desc">Get instant notifications for fresh job drops, exclusive hiring drives, and daily referral opportunities directly to your phone.</p>
+          <div class="community-meta">
+            <span class="member-count">25.4K Members</span>
+            <span class="action-text">Join Channel <svg width="14" height="14"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </a>
 
-    <!-- CONTACT -->
-    <section id="contact" class="container padding-y reveal-up">
-      <div class="grid-4 contact-grid">
-        <a href="https://t.me/topreferralhub" target="_blank" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
-          <span class="icon">✈</span>
-          <div>
-            <strong>Telegram</strong>
-            <span>@topreferralhub</span>
-          </div>
-        </a>
-        <a href="mailto:hello@referralhub.io" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
-          <span class="icon">✉</span>
-          <div>
-            <strong>Email</strong>
-            <span>hello@referralhub.io</span>
-          </div>
-        </a>
-        <a href="#" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
-          <span class="icon">in</span>
-          <div>
-            <strong>LinkedIn</strong>
-            <span>/referralhub</span>
-          </div>
-        </a>
-        <a href="#" class="glass-card contact-pill" style="text-decoration:none; color:inherit;">
-          <span class="icon">gh</span>
-          <div>
-            <strong>GitHub</strong>
-            <span>/referralhub</span>
+        <a href="https://t.me/referralsandjob" target="_blank" rel="noopener" class="glass-card community-card link-card">
+          <div class="community-icon bg-purple">💬</div>
+          <h3 class="community-title">Interactive Discussion Group</h3>
+          <p class="community-desc">Ask questions, share online assessment (OA) experiences, review resumes, and get honest, unfiltered career takes from peers.</p>
+          <div class="community-meta">
+            <span class="member-count">Active 24/7</span>
+            <span class="action-text">Join Chat <svg width="14" height="14"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </a>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <div class="logo-box"></div>
-        <h3>Referral<strong>Hub</strong></h3>
-        <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
-      </div>
-      <div>
-        <h4>QUICK LINKS</h4>
-        <a href="#home">Home</a>
-        <a href="#companies">Companies</a>
-        <a href="#jobs">Latest Jobs</a>
-        <a href="#premium">Premium</a>
-      </div>
-      <div>
-        <h4>COMMUNITY</h4>
-        <a href="https://t.me/topreferralhub" target="_blank">Telegram Channel</a>
-        <a href="https://t.me/referralsandjob" target="_blank">Telegram Discussion</a>
-        <a href="#" class="mute">Discord (soon)</a>
-        <a href="#" class="mute">WhatsApp (soon)</a>
-      </div>
-      <div>
-        <h4>RESOURCES</h4>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="https://forms.gle/qN16cbBesF5RVoKr7" target="_blank">Join Premium</a>
-        <a href="#">Privacy</a>
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="footer" role="contentinfo">
+    <!-- Newsletter / Final CTA -->
+    <div class="footer-cta container reveal-up">
+      <div class="cta-inner glass-card">
+        <div class="cta-content">
+          <h2>Get one high-quality referral drop every Monday.</h2>
+          <p>Curated openings, salary insights, and resume tips. No spam, ever.</p>
+        </div>
+        <form id="newsletter-form" class="newsletter-form" action="#" method="POST">
+          <div class="input-group">
+            <input type="email" id="email-input" required placeholder="name@domain.com" aria-label="Email address">
+            <button type="submit" class="btn-solid">Subscribe</button>
+          </div>
+        </form>
       </div>
     </div>
+
+    <!-- Main Footer Links -->
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <a href="#home" class="logo">
+          <img src="logo_referralhub.jpg" alt="Referral Hub Logo" class="custom-logo" width="36" height="36" loading="lazy">
+          <span class="logo-text">Referral<strong>Hub</strong></span>
+        </a>
+        <p class="footer-desc">Genuine employee referrals from top technology and finance companies. Built for students, freshers, and professionals aiming higher.</p>
+        <div class="social-links">
+          <a href="https://t.me/topreferralhub" aria-label="Telegram" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#icon-telegram"></use></svg></a>
+          <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#icon-linkedin"></use></svg></a>
+        </div>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Platform</h4>
+        <ul class="footer-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#companies">Browse Companies</a></li>
+          <li><a href="#jobs">Latest Jobs</a></li>
+          <li><a href="#premium">Premium Elite</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Community</h4>
+        <ul class="footer-list">
+          <li><a href="https://t.me/topreferralhub" target="_blank" rel="noopener">Telegram Channel</a></li>
+          <li><a href="https://t.me/referralsandjob" target="_blank" rel="noopener">Discussion Group</a></li>
+          <li><span class="mute-text">Discord (Coming Soon)</span></li>
+          <li><span class="mute-text">WhatsApp (Coming Soon)</span></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Legal & Resources</h4>
+        <ul class="footer-list">
+          <li><a href="mailto:hello@referralhub.io">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Code of Conduct</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom -->
     <div class="container footer-bottom">
-      <span>Referral Hub © 2026</span>
-      <span>Made with ☕ & warm intros.</span>
+      <div class="footer-bottom-inner">
+        <span class="copyright">&copy; 2026 Referral Hub. All rights reserved.</span>
+        <span class="credit">Built with ☕ and warm introductions in India.</span>
+      </div>
     </div>
   </footer>
 
-  <!-- TO TOP BUTTON -->
-  <div id="to-top" class="scroll-top" style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; backdrop-filter: blur(10px); z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s;">↑</div>
+  <!-- =========================================================================
+       FLOATING ELEMENTS (To Top, Toast)
+       ========================================================================= -->
+  <button id="to-top" class="scroll-top" aria-label="Scroll to top" tabindex="-1">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(-90deg);"><path d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+  </button>
 
-  <!-- Toast (Used by JS) -->
-  <div id="toast" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: #34d399; color: #000; padding: 12px 24px; border-radius: 30px; font-weight: 600; opacity: 0; transition: all 0.3s; z-index: 10000;"></div>
+  <div id="toast" class="toast-notification" role="alert" aria-live="assertive"></div>
 
+  <!-- Javascript -->
   <script src="script.js"></script>
 </body>
 </html>

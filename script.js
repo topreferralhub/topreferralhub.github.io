@@ -1,6 +1,5 @@
 /* =========================================================
    REFERRAL HUB — script.js
-   Vanilla JS. Lenis smooth scroll + IO + micro-interactions.
    ========================================================= */
 
 (() => {
@@ -26,9 +25,8 @@
         preloader && preloader.classList.add('hide');
         const heroTitle = $('.hero-title');
         heroTitle && heroTitle.classList.add('reveal');
-        $$('.hero-meta, .hero-sub, .hero-cta, .hero-visual').forEach((el, i) => {
-          setTimeout(() => el.classList.add('in'), 200 + i * 120);
-        });
+        const heroSub = $('.hero-sub');
+        heroSub && heroSub.classList.add('in');
       }, 400);
     }
   };
@@ -79,6 +77,17 @@
   }, { threshold: 0.4 });
   $$('[data-count]').forEach((el) => counterIo.observe(el));
 
+  /* REVEAL ON SCROLL (THIS WAS THE MISSING FIX) */
+  const revealIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        revealIo.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  $$('.reveal-up').forEach(el => revealIo.observe(el));
+
   /* CUSTOM CURSOR */
   const cursor = $('#cursor');
   const cursorDot = $('#cursor-dot');
@@ -98,7 +107,7 @@
   requestAnimationFrame(loop);
 
   /* LOAD JOBS */
-  const state = { jobs: [], query: '', filter: 'all' };
+  const state = { jobs: [] };
   const initials = (name) => name.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase();
   
   const jobCard = (job) => `
@@ -123,6 +132,8 @@
   const render = () => {
     const jobsGrid = $('#jobs-grid');
     if (jobsGrid) jobsGrid.innerHTML = state.jobs.map(j => jobCard(j)).join('');
+    // Ensure new job cards fade in correctly
+    $$('.job-card').forEach(el => revealIo.observe(el));
   };
 
   fetch('jobs.json')

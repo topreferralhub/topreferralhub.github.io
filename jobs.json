@@ -31,5 +31,38 @@
     "deadline": "2026-02-04",
     "applyLink": "#",
     "featured": true
+  },
+  {
+    "company": "Adobe",
+    "location": "Noida, IN",
+    "role": "ML Engineer",
+    "batch": "2023 / 2024",
+    "salary": "₹35–50 LPA",
+    "skills": ["Python", "TensorFlow", "C++"],
+    "deadline": "2026-01-25",
+    "applyLink": "#",
+    "featured": false
+  },
+  {
+    "company": "Salesforce",
+    "location": "Hyderabad, IN",
+    "role": "Software Engineer",
+    "batch": "2024",
+    "salary": "₹30–45 LPA",
+    "skills": ["Java", "Spring Boot", "React"],
+    "deadline": "2026-02-10",
+    "applyLink": "#",
+    "featured": false
+  },
+  {
+    "company": "Oracle",
+    "location": "Bengaluru, IN",
+    "role": "Cloud Engineer",
+    "batch": "2022 / 2023",
+    "salary": "₹25–40 LPA",
+    "skills": ["OCI", "Linux", "Networking"],
+    "deadline": "2026-02-15",
+    "applyLink": "#",
+    "featured": false
   }
 ]

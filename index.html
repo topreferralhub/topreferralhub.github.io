@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Referral Hub</title>
+  <title>Referral Hub - Tech Career Platform</title>
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -15,40 +15,78 @@
 </head>
 <body>
 
+  <!-- Background Grid Pattern -->
+  <div class="grid-background" aria-hidden="true"></div>
+
   <!-- Header & Navigation -->
   <header>
-    <a href="#home">
-      <h2><em>Referral</em>Hub</h2>
-    </a>
-    <nav aria-label="Primary">
-      <a href="#home">Home</a>
-      <a href="#companies">Companies</a>
-      <a href="#jobs">Latest Jobs</a>
-      <a href="#premium">Premium</a>
-      <a href="#about">About</a>
-    </nav>
-    <div>
-      <a href="https://t.me/topreferralhub" class="join-btn" rel="noopener" target="_blank">Join Telegram</a>
+    <div class="header-inner">
+      <a href="#home" class="logo-group">
+        <div class="logo-icon-gradient"></div>
+        <h2>Referral<span class="logo-weight-bold">Hub</span></h2>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#companies">Companies</a>
+        <a href="#jobs">Latest Jobs</a>
+        <a href="#premium">Premium</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a href="https://t.me/topreferralhub" class="join-btn" rel="noopener" target="_blank">
+          <i class="telegram-icon"></i>
+          <span>Join Telegram</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <main>
     <!-- Hero Section -->
-    <section id="home">
-      <div>
-        <span class="live-badge">🟢 Live · 25,000+ members on Telegram</span>
+    <section id="home" class="hero">
+      <div class="hero-text-column">
+        <div class="pill-badge">
+          <span class="badge-icon"></span>
+          <span>Live · 25,000+ members on Telegram</span>
+        </div>
+        <h1>
+          Land your dream job<br>
+          through <em>employee</em><br>
+          referrals.
+        </h1>
+        <p>
+          Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance and premium career opportunities.
+        </p>
       </div>
-      <h1>
-        Land your dream job<br>
-        through <em>employee</em><br>
-        referrals.
-      </h1>
-      <p>
-        Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance and premium career opportunities.
-      </p>
-      <div class="cta-group">
-        <a href="#jobs" class="btn-primary">Explore Referrals</a>
-        <a href="#premium" class="btn-secondary">Premium Membership &rarr;</a>
+
+      <!-- Complex Illustrative Graphic from image_2.png -->
+      <div class="hero-graphic-column">
+        <div class="cube-container">
+          <!-- The Glowing Cube -->
+          <div class="cube">
+            <span class="cube-text">HUB</span>
+          </div>
+          
+          <!-- Floating Connection Graphics -->
+          <div class="connection-line line-1" aria-hidden="true"></div>
+          <div class="connection-circle circle-1" aria-hidden="true"></div>
+          <div class="connection-circle circle-2" aria-hidden="true"></div>
+
+          <!-- Company Badges -->
+          <div class="company-badge badge-google">
+            <div class="badge-logo google">G</div>
+            <span>Google · SDE II</span>
+          </div>
+          <div class="company-badge badge-microsoft">
+            <div class="badge-logo microsoft">M</div>
+            <span>Microsoft · Data</span>
+          </div>
+          <div class="company-badge badge-amazon">
+            <div class="badge-logo amazon">A</div>
+            <span>Amazon · ML</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -124,13 +162,15 @@
   </main>
 
   <footer>
-    <div>
-      <h2><em>Referral</em>Hub</h2>
-      <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
-    </div>
-    <div class="footer-bottom">
-      <span>Referral Hub © 2026</span>
-      <span>Made with ☕ &amp; warm intros.</span>
+    <div class="footer-inner">
+      <div>
+        <h2>ReferralHub</h2>
+        <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
+      </div>
+      <div class="footer-bottom">
+        <span>Referral Hub © 2026</span>
+        <span>Made with ☕ &amp; warm intros.</span>
+      </div>
     </div>
   </footer>
 </body>

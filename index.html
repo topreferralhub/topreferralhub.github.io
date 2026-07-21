@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ReferralHub</title>
+  <title>ReferralHub - Land your dream job</title>
   
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
   
-  <!-- Lenis CSS & Script for Smooth Scrolling -->
+  <!-- Lenis for Smooth Scrolling -->
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
   
   <link rel="stylesheet" href="style.css">
@@ -23,54 +25,167 @@
   <div id="preloader">
     <div id="preloader-count">0%</div>
     <div style="width: 200px; height: 2px; background: rgba(255,255,255,0.2); margin-top: 10px;">
-      <div id="preloader-bar-fill" style="height: 100%; background: #fff; width: 0%;"></div>
+      <div id="preloader-bar-fill" style="height: 100%; background: #7c3aed; width: 0%;"></div>
     </div>
   </div>
 
-  <!-- Progress Bar -->
+  <!-- Scroll Progress -->
   <div id="scroll-progress" style="position: fixed; top: 0; left: 0; height: 3px; background: #7c3aed; z-index: 9999; width: 0%;"></div>
 
-  <!-- Header -->
+  <!-- Background Gradients & Grid -->
+  <div class="bg-glow-left"></div>
+  <div class="bg-glow-right"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Floating Header -->
   <header id="nav">
     <div class="header-inner">
-      <a href="#home" class="logo">Referral<strong>Hub</strong></a>
-      <a href="https://t.me/topreferralhub" class="btn-primary ripple">Join Telegram</a>
+      <a href="#home" class="logo">
+        <div class="logo-box"></div>
+        <span>Referral<strong>Hub</strong></span>
+      </a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#companies">Companies</a>
+        <a href="#jobs">Latest Jobs</a>
+        <a href="#premium">Premium</a>
+        <a href="#about">About</a>
+      </nav>
+      <a href="https://t.me/topreferralhub" class="btn-primary ripple" target="_blank">
+        Join Telegram
+      </a>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section id="home" class="hero">
       <div class="hero-content">
+        <div class="live-badge reveal-up">
+          <span class="dot"></span>
+          Live · 25,000+ members on Telegram
+        </div>
         <h1 class="hero-title" style="opacity: 0;">
-          Land your dream job through <span class="serif-italic">employee</span> referrals.
+          Land your<br>dream job<br>through <span class="serif-italic">employee</span><br>referrals.
         </h1>
-        <p class="hero-sub" style="opacity: 0;">Connecting professionals with genuine employee referrals.</p>
+        <p class="hero-sub hero-subtext" style="opacity: 0;">
+          Referral Hub connects students and professionals with verified employees from top companies for genuine referrals, resume reviews, interview guidance and premium career opportunities.
+        </p>
+      </div>
+      
+      <!-- CSS Graphic -->
+      <div class="hero-graphic reveal-up">
+        <div class="orbit-container">
+          <div class="center-cube"></div>
+          <div class="orbit-ring"></div>
+          <div class="pill google-pill">
+            <span class="logo-icon g-icon">G</span> Google · SDE II
+          </div>
+          <div class="pill ms-pill">
+            <span class="logo-icon m-icon">⊞</span> Microsoft · Data
+          </div>
+          <div class="pill amz-pill">
+            <span class="logo-icon a-icon">a</span> Amazon · ML
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Stats with Counters -->
+    <!-- STATS -->
     <section class="stats-grid container">
       <div class="glass-card stat-card">
         <h2 data-count="150" data-suffix="+">0</h2>
         <p>Companies</p>
       </div>
       <div class="glass-card stat-card">
+        <h2 data-count="3500" data-suffix="+">0</h2>
+        <p>Employee Referrals</p>
+      </div>
+      <div class="glass-card stat-card">
         <h2 data-count="25000" data-suffix="+">0</h2>
         <p>Telegram Members</p>
       </div>
-    </section>
-
-    <!-- Jobs Section (Dynamic from JSON) -->
-    <section id="jobs" class="container padding-y">
-      <h2 class="section-title">Fresh openings, warm introductions.</h2>
-      <div id="jobs-grid" class="grid-3">
-        <!-- JS injects jobs here -->
+      <div class="glass-card stat-card">
+        <h2 data-count="98" data-suffix="%">0</h2>
+        <p>Success Rate</p>
       </div>
     </section>
+
+    <!-- MANIFESTO -->
+    <section class="container padding-y reveal-up">
+      <div class="section-tag">01 — MANIFESTO</div>
+      <h2 class="section-title">A referral is worth<br><span class="serif-italic">a thousand cold applications.</span></h2>
+      
+      <div class="grid-4">
+        <div class="glass-card text-card">
+          <span class="card-num">01</span>
+          <h3>Verified employees</h3>
+          <p>Every referrer is manually verified against their company profile. No middlemen, no scams — only genuine humans on the other side.</p>
+        </div>
+        <div class="glass-card text-card">
+          <span class="card-num">02</span>
+          <h3>Resume review</h3>
+          <p>ATS-optimized, keyword-mapped and rewritten by hiring managers.</p>
+        </div>
+        <div class="glass-card text-card">
+          <span class="card-num">03</span>
+          <h3>Interview help</h3>
+          <p>Mock interviews, DSA drills, system design walkthroughs from FAANG engineers.</p>
+        </div>
+        <div class="glass-card text-card">
+          <span class="card-num">04</span>
+          <h3>Career growth</h3>
+          <p>Salary negotiation playbooks, promotion memos and long-term mentorship.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOBS SECTION (Dynamic) -->
+    <section id="jobs" class="container padding-y">
+      <div class="section-tag">03 — LATEST REFERRALS</div>
+      <h2 class="section-title">Fresh openings,<br><span class="serif-italic">warm introductions.</span></h2>
+      
+      <div id="jobs-grid" class="grid-3">
+        <!-- JS will inject the job cards from jobs.json here -->
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section id="premium" class="container padding-y reveal-up">
+      <div class="premium-banner">
+        <div class="section-tag">04 — PREMIUM</div>
+        <h2>Referral<span class="serif-italic">Hub</span> Premium</h2>
+        <p>The unfair advantage. Every tool, every intro, every review — for the ones who mean it.</p>
+        
+        <div class="premium-features">
+          <ul>
+            <li><span class="check">✓</span> Employee Referrals</li>
+            <li><span class="check">✓</span> ATS Optimization</li>
+            <li><span class="check">✓</span> LinkedIn Review</li>
+          </ul>
+          <ul>
+            <li><span class="check">✓</span> Resume Review</li>
+            <li><span class="check">✓</span> Interview Preparation</li>
+            <li><span class="check">✓</span> Priority Referral</li>
+          </ul>
+        </div>
+        <button class="btn-solid">Join Premium ↗</button>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Scripts -->
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box"></div>
+        <h3>Referral<strong>Hub</strong></h3>
+        <p>Genuine employee referrals from top companies — for students, freshers and professionals.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
